@@ -19,7 +19,7 @@ function PathCard({ icon: Icon, title, description, rewards, level }: PathCardPr
           </div>
           <h3 className="text-xl font-bold text-white">{title}</h3>
         </div>
-        <span className="px-4 py-1.5 bg-green-500/10 text-green-400 rounded-full text-sm min-w-[100px] text-center">
+        <span className="px-4 py-1.5 bg-green-500/10 text-green-400 rounded-full text-sm inline-flex items-center justify-center w-fit">
           {level}
         </span>
       </div>
@@ -91,7 +91,7 @@ export default function LearnToEarnPage() {
         </div>
 
         {/* Learning Paths Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-16">
           {learningPaths.map((path, index) => (
             <PathCard key={index} {...path} />
           ))}
