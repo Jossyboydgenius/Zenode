@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trophy, GitPullRequest, Bug, Users, Sparkles, ChevronRight, Stars, Rocket, Diamond } from 'lucide-react';
-import { StatCard, FeatureCard, WhyJoinCard, TestimonialCard } from '../components/ui/Cards';
+import { StatCard, FeatureCard, WhyJoinCard, TestimonialCard } from '@/components/ui/cards';
 
 export default function LandingPage() {
   return (
