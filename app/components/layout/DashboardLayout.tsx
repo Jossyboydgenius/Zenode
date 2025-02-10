@@ -10,7 +10,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="min-h-screen bg-black/95">
       <div className="flex">
         <Sidebar />
-        <main className="flex-1 p-8 ml-[280px]">
+        <main className="flex-1 p-8 transition-all duration-300 md:ml-[80px]">
           {children}
         </main>
       </div>
