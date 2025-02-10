@@ -1,9 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { LuGithub } from "react-icons/lu";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // TEMPORARY: Handle login for testing
+  // TODO: REMOVE THIS AND IMPLEMENT PROPER AUTHENTICATION
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // For testing: accept any email/password combination
+    navigate('/dashboard');
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-black/95">
       <div className="w-full max-w-md p-8 space-y-6 bg-black/40 backdrop-blur-xl rounded-xl border border-gray-800">
@@ -35,7 +47,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label htmlFor="email" className="text-sm font-medium text-gray-200">
               Email
@@ -43,6 +55,8 @@ export default function Login() {
             <input
               type="email"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="m@example.com"
               className="mt-1 block w-full px-3 py-2 bg-black/40 border border-gray-700 rounded-md text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
             />
@@ -60,14 +74,19 @@ export default function Login() {
             <input
               type="password"
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="mt-1 block w-full px-3 py-2 bg-black/40 border border-gray-700 rounded-md text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
             />
           </div>
 
-          <button className="w-full bg-gradient-to-r from-green-400 to-cyan-400 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+          <button 
+            type="submit"
+            className="w-full bg-gradient-to-r from-green-400 to-cyan-400 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+          >
             Login
           </button>
-        </div>
+        </form>
 
         <p className="text-center text-sm text-gray-400">
           Don't have an account?{' '}
