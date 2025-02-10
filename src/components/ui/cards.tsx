@@ -9,10 +9,10 @@ interface StatCardProps {
 
 export function StatCard({ icon: Icon, value, label }: StatCardProps) {
   return (
-    <div className="glass-effect p-6 rounded-xl glowing">
-      <Icon className="w-8 h-8 mx-auto mb-4 text-green-400 floating" />
-      <div className="text-2xl font-bold text-white mb-1">{value}</div>
-      <div className="text-gray-400">{label}</div>
+    <div className="glass-effect p-6 rounded-xl">
+      <Icon className="w-8 h-8 text-green-400 mb-4" />
+      <h3 className="text-3xl font-bold text-white mb-2">{value}</h3>
+      <p className="text-gray-400">{label}</p>
     </div>
   );
 }
