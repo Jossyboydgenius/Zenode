@@ -10,6 +10,11 @@ import {
   Send,
   Settings2,
   Terminal,
+  Award,
+  GitPullRequest,
+  Code,
+  Wallet,
+  Image,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav/NavMain"
@@ -28,93 +33,108 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "johndoe",
+    email: "john@zenode.dev",
+    avatar: "/avatars/john.jpg",
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: Terminal,
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: PieChart,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Overview",
+          url: "/dashboard",
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Projects",
+          url: "/dashboard/projects",
         },
         {
-          title: "Settings",
-          url: "#",
+          title: "Analytics",
+          url: "/dashboard/analytics",
         },
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
+      title: "Playground",
+      url: "/playground",
+      icon: Code,
       items: [
         {
-          title: "Genesis",
-          url: "#",
+          title: "Code Editor",
+          url: "/playground/editor",
         },
         {
-          title: "Explorer",
-          url: "#",
+          title: "Smart Contracts",
+          url: "/playground/smart-contracts",
         },
         {
-          title: "Quantum",
-          url: "#",
+          title: "Web3 Integration",
+          url: "/playground/web3",
+        },
+        {
+          title: "Challenges",
+          url: "/playground/challenges",
         },
       ],
     },
     {
-      title: "Documentation",
-      url: "#",
+      title: "Contributions",
+      url: "/contributions",
+      icon: GitPullRequest,
+      items: [
+        {
+          title: "My PRs",
+          url: "/contributions/prs",
+        },
+        {
+          title: "Issues",
+          url: "/contributions/issues",
+        },
+        {
+          title: "Rewards",
+          url: "/contributions/rewards",
+        },
+      ],
+    },
+    {
+      title: "Learn",
+      url: "/learn",
       icon: BookOpen,
       items: [
         {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
           title: "Tutorials",
-          url: "#",
+          url: "/learn/tutorials",
         },
         {
-          title: "Changelog",
-          url: "#",
+          title: "Challenges",
+          url: "/learn/challenges",
+        },
+        {
+          title: "Resources",
+          url: "/learn/resources",
         },
       ],
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/settings",
       icon: Settings2,
       items: [
         {
-          title: "General",
-          url: "#",
+          title: "Profile",
+          url: "/settings/profile",
         },
         {
-          title: "Team",
-          url: "#",
+          title: "Preferences",
+          url: "/settings/preferences",
         },
         {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
+          title: "Notifications",
+          url: "/settings/notifications",
         },
       ],
     },
@@ -122,30 +142,30 @@ const data = {
   navSecondary: [
     {
       title: "Support",
-      url: "#",
+      url: "/support",
       icon: LifeBuoy,
     },
     {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
+      title: "Documentation",
+      url: "/docs",
+      icon: BookOpen,
     },
   ],
   projects: [
     {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
+      name: "Smart Contracts",
+      url: "/projects/smart-contracts",
+      icon: Code,
     },
     {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
+      name: "DeFi Integration",
+      url: "/projects/defi",
+      icon: Wallet,
     },
     {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      name: "NFT Marketplace",
+      url: "/projects/nft",
+      icon: Image,
     },
   ],
 }
@@ -158,12 +178,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <Command className="size-4" />
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-green-500/20">
+                  <Award className="size-4 text-green-400" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                  <span className="truncate font-semibold gradient-text">Zenode</span>
+                  <span className="truncate text-xs text-gray-400">Web3 Development</span>
                 </div>
               </a>
             </SidebarMenuButton>
