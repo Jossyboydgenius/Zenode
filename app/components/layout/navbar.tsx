@@ -20,7 +20,7 @@ export function Navbar() {
         </div>
         <div className="flex items-center space-x-4">
           {/* <button className="text-gray-300 hover:text-white transition-colors">Login</button> */}
-          <button className="gradient-text green-glow bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+          <button className="magical-border text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
             Get Started
           </button>
         </div>
