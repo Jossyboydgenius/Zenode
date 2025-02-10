@@ -8,11 +8,17 @@ import HowItWorksPage from '../app/pages/HowItWorks';
 import LearnToEarnPage from '../app/pages/LearnToEarn';
 import LoginPage from '../app/pages/Login';
 import SignupPage from '../app/pages/Signup';
+import DashboardPage from '../app/pages/Dashboard';
 
 // Layout wrapper component
 function AppLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const isAuthPage = ['/login', '/signup'].includes(location.pathname);
+  const isDashboardPage = location.pathname.startsWith('/dashboard');
+
+  if (isDashboardPage) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col">
@@ -23,6 +29,19 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       {!isAuthPage && <Footer />}
     </div>
   );
+}
+
+// Protected Route component
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  // TEMPORARY: Set to true for testing purposes
+  // TODO: REMOVE THIS AND IMPLEMENT PROPER AUTHENTICATION
+  const isAuthenticated = true; // <-- Remove this line when implementing real auth
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <>{children}</>;
 }
 
 export default function App() {
@@ -36,6 +55,14 @@ export default function App() {
           <Route path="/learn-to-earn" element={<LearnToEarnPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route
+            path="/dashboard/*"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AppLayout>
