@@ -41,7 +41,7 @@ export default function HowItWorksPage() {
         </div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           <StepCard
             icon={Code}
             title="Create Your Profile"
