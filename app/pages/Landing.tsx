@@ -72,6 +72,19 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* Trusted By Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h3 className="text-center text-gray-400 mb-8">Trusted by:</h3>
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 items-center opacity-50">
+          <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" className="h-8 w-auto mx-auto" />
+          <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche" className="h-8 w-auto mx-auto" />
+          <img src="https://cryptologos.cc/logos/aragon-ant-logo.png" alt="Aragon" className="h-8 w-auto mx-auto" />
+          <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" className="h-8 w-auto mx-auto" />
+          <img src="https://cryptologos.cc/logos/balancer-bal-logo.png" alt="Balancer" className="h-8 w-auto mx-auto" />
+          <img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="Ethereum" className="h-8 w-auto mx-auto" />
+        </div>
+      </div>
+
       {/* Why Join Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center mb-16">
