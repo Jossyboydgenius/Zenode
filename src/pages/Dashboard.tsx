@@ -14,10 +14,13 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Activity, Users, GitPullRequest, Trophy, GitCommit, GitPullRequestDraft, MessageSquare, Star } from 'lucide-react';
+import { Activity, Users, GitPullRequest, Trophy, GitCommit, GitPullRequestDraft, MessageSquare, Star, Code } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { CodeEditor } from "@/components/CodeEditor";
 
 export default function Dashboard() {
+  const [showEditor, setShowEditor] = React.useState(false);
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -90,87 +93,100 @@ export default function Dashboard() {
           
           {/* Main Dashboard Content */}
           <div className="min-h-[calc(100vh-16rem)] rounded-xl glass-effect p-6">
-            <h2 className="text-xl font-semibold text-white mb-4">Recent Activity</h2>
-            <div className="space-y-6">
-              {/* Activity Item 1 */}
-              <div className="flex items-start gap-4">
-                <Avatar className="w-10 h-10">
-                  <AvatarImage src="/avatars/alice.jpg" alt="Alice" />
-                  <AvatarFallback>AL</AvatarFallback>
-                </Avatar>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-white">Alice Chen</span>
-                    <span className="text-gray-400">opened a pull request</span>
-                    <span className="text-sm text-green-400">#123</span>
-                  </div>
-                  <p className="text-gray-400 mt-1">
-                    Add smart contract integration for token swaps
-                  </p>
-                  <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <GitPullRequestDraft className="w-4 h-4" />
-                      2 hours ago
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MessageSquare className="w-4 h-4" />
-                      3 comments
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Activity Item 2 */}
-              <div className="flex items-start gap-4">
-                <Avatar className="w-10 h-10">
-                  <AvatarImage src="/avatars/bob.jpg" alt="Bob" />
-                  <AvatarFallback>BJ</AvatarFallback>
-                </Avatar>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-white">Bob Johnson</span>
-                    <span className="text-gray-400">committed to</span>
-                    <span className="text-green-400">main</span>
-                  </div>
-                  <p className="text-gray-400 mt-1">
-                    Update NFT marketplace documentation
-                  </p>
-                  <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <GitCommit className="w-4 h-4" />
-                      5 hours ago
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Activity Item 3 */}
-              <div className="flex items-start gap-4">
-                <Avatar className="w-10 h-10">
-                  <AvatarImage src="/avatars/carol.jpg" alt="Carol" />
-                  <AvatarFallback>CW</AvatarFallback>
-                </Avatar>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-white">Carol White</span>
-                    <span className="text-gray-400">earned a badge</span>
-                    <span className="flex items-center gap-1 text-yellow-400">
-                      <Star className="w-4 h-4" />
-                      Smart Contract Expert
-                    </span>
-                  </div>
-                  <p className="text-gray-400 mt-1">
-                    Completed 10 smart contract challenges
-                  </p>
-                  <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <Trophy className="w-4 h-4" />
-                      8 hours ago
-                    </span>
-                  </div>
-                </div>
-              </div>
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-semibold text-white">Recent Activity</h2>
+              <button 
+                onClick={() => setShowEditor(true)}
+                className="bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-2"
+              >
+                <Code className="w-5 h-5" />
+                Start Coding
+              </button>
             </div>
+            {showEditor ? (
+              <CodeEditor />
+            ) : (
+              <div className="space-y-6">
+                {/* Activity Item 1 */}
+                <div className="flex items-start gap-4">
+                  <Avatar className="w-10 h-10">
+                    <AvatarImage src="/avatars/alice.jpg" alt="Alice" />
+                    <AvatarFallback>AL</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-white">Alice Chen</span>
+                      <span className="text-gray-400">opened a pull request</span>
+                      <span className="text-sm text-green-400">#123</span>
+                    </div>
+                    <p className="text-gray-400 mt-1">
+                      Add smart contract integration for token swaps
+                    </p>
+                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                      <span className="flex items-center gap-1">
+                        <GitPullRequestDraft className="w-4 h-4" />
+                        2 hours ago
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <MessageSquare className="w-4 h-4" />
+                        3 comments
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Activity Item 2 */}
+                <div className="flex items-start gap-4">
+                  <Avatar className="w-10 h-10">
+                    <AvatarImage src="/avatars/bob.jpg" alt="Bob" />
+                    <AvatarFallback>BJ</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-white">Bob Johnson</span>
+                      <span className="text-gray-400">committed to</span>
+                      <span className="text-green-400">main</span>
+                    </div>
+                    <p className="text-gray-400 mt-1">
+                      Update NFT marketplace documentation
+                    </p>
+                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                      <span className="flex items-center gap-1">
+                        <GitCommit className="w-4 h-4" />
+                        5 hours ago
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Activity Item 3 */}
+                <div className="flex items-start gap-4">
+                  <Avatar className="w-10 h-10">
+                    <AvatarImage src="/avatars/carol.jpg" alt="Carol" />
+                    <AvatarFallback>CW</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-white">Carol White</span>
+                      <span className="text-gray-400">earned a badge</span>
+                      <span className="flex items-center gap-1 text-yellow-400">
+                        <Star className="w-4 h-4" />
+                        Smart Contract Expert
+                      </span>
+                    </div>
+                    <p className="text-gray-400 mt-1">
+                      Completed 10 smart contract challenges
+                    </p>
+                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                      <span className="flex items-center gap-1">
+                        <Trophy className="w-4 h-4" />
+                        8 hours ago
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </SidebarInset>
