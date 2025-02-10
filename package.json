@@ -57,5 +57,8 @@
   "aliases": {
     "components": "@/components",
     "utils": "@/utils"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
