@@ -185,6 +185,33 @@ export default function Dashboard() {
                     </div>
                   </div>
                 </div>
+
+                {/* Activity Item 3 */}
+                <div className="flex items-start gap-4">
+                  <Avatar className="w-10 h-10">
+                    <AvatarImage src="/avatars/carol.jpg" alt="Carol" />
+                    <AvatarFallback>AJ</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-white">Awe Joseph</span>
+                      <span className="text-gray-400">earned a badge</span>
+                      <span className="flex items-center gap-1 text-yellow-400">
+                        <Star className="w-4 h-4" />
+                        Smart Contract Genius
+                      </span>
+                    </div>
+                    <p className="text-gray-400 mt-1">
+                      Completed 20 smart contract challenges
+                    </p>
+                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                      <span className="flex items-center gap-1">
+                        <Trophy className="w-4 h-4" />
+                        10 hours ago
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
