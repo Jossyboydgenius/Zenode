@@ -24,7 +24,7 @@ export default function LandingPage() {
             <h1 className="text-6xl md:text-7xl font-extrabold mb-6 text-white">
               Open source contributions
               <br />
-              in <span className="gradient-text green-glow">Web3.</span>
+              in <span className="gradient-text green-glow">Web3</span>
               <br />
               <span className="gradient-text green-glow">Made Fun.</span>
             </h1>
