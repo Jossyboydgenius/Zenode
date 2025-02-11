@@ -7,9 +7,6 @@ export default function LandingPage() {
     <>
       {/* Hero Section */}
       <div className="relative pt-32">
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-grid-pattern"></div>
-        
         {/* Gradient overlay - inverted direction */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-green-900/40 to-green-400/5"></div>
         
