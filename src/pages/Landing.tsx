@@ -7,7 +7,17 @@ export default function LandingPage() {
     <>
       {/* Hero Section */}
       <div className="relative pt-32">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=2000&q=80')] opacity-5 bg-cover bg-center"></div>
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-grid-pattern"></div>
+        
+        {/* Gradient overlay - inverted direction */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-green-900/40 to-green-400/5"></div>
+        
+        {/* Light curve at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-32">
+          <div className="absolute inset-0 bg-curve-light"></div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 text-green-400 mb-8">
