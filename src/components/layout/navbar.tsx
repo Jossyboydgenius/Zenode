@@ -7,7 +7,7 @@ export function Navbar() {
 
   return (
     <nav className="nav-glass fixed w-full z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-6">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
         <Link to="/" className="flex items-center space-x-3">
           <Award className="w-10 h-10 text-green-400" />
           <span className="text-2xl font-bold gradient-text">Zenode</span>
