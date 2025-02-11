@@ -127,6 +127,27 @@
   .animate-collapsible-up {
     animation: collapsible-up 0.2s ease-out;
   }
+
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(34, 197, 94, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(34, 197, 94, 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-curve-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px; /* Adjust based on your needs */
+    background: radial-gradient(
+      800px 150px at top,
+      transparent 98%,
+      rgb(0, 0, 0) 100%
+    );
+    transform: translateY(50%);
+  }
 }
 
 @keyframes float {
