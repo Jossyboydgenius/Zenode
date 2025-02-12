@@ -82,13 +82,27 @@ export default function LandingPage() {
       {/* Trusted By Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h3 className="text-center text-gray-400 mb-8">Trusted by:</h3>
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 items-center opacity-50">
-          <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" className="h-8 w-auto mx-auto" />
-          <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche" className="h-8 w-auto mx-auto" />
-          <img src="https://cryptologos.cc/logos/aragon-ant-logo.png" alt="Aragon" className="h-8 w-auto mx-auto" />
-          <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" className="h-8 w-auto mx-auto" />
-          <img src="https://cryptologos.cc/logos/balancer-bal-logo.png" alt="Balancer" className="h-8 w-auto mx-auto" />
-          <img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="Ethereum" className="h-8 w-auto mx-auto" />
+        <div className="flex items-center justify-center space-x-14 opacity-50">
+          <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/aragon-ant-logo.png" alt="Aragon" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/balancer-bal-logo.png" alt="Balancer" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="Ethereum" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/aave-aave-logo.png" alt="Aave" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/aragon-ant-logo.png" alt="Aragon" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/balancer-bal-logo.png" alt="Balancer" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="Ethereum" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap" className="h-8 w-auto" />
+          <img src="https://cryptologos.cc/logos/aave-aave-logo.png" alt="Aave" className="h-8 w-auto" />
         </div>
       </div>
 
@@ -115,7 +129,7 @@ export default function LandingPage() {
           <WhyJoinCard
             icon={Stars}
             title="Enhance Your Skillset And Boost Your Salary"
-            description="Become a blockchain developer with LazyDev for free. Master Solidity and Rust development."
+            description="Become a blockchain developer with Zenode for free. Master Solidity and Rust development."
             buttonText="Upskill Now"
           />
         </div>
@@ -148,7 +162,7 @@ export default function LandingPage() {
             imageSrc="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&h=200"
             name="Johnson Asiedu"
             role="Software Engineer"
-            testimonial="LazyDev is cooking something really sweet with their gamified code contribution platform. Leveraging AI to match developers to potential projects by best fitting them to skillset while also creating a system where develpers can verify their skills via coderbyte is a unique move imo."
+            testimonial="Zenode is cooking something really sweet with their gamified code contribution platform. Leveraging AI to match developers to potential projects by best fitting them to skillset while also creating a system where develpers can verify their skills via coderbyte is a unique move imo."
           />
           <TestimonialCard
             imageSrc="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200"
@@ -160,7 +174,7 @@ export default function LandingPage() {
             imageSrc="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=200&h=200"
             name="Sarah Chen"
             role="Full Stack Developer"
-            testimonial="I've landed two major projects through LazyDev's AI matching system. The platform's ability to match developers with projects based on their actual coding abilities rather than just their resume is game-changing."
+            testimonial="I've landed two major projects through Zenode's AI matching system. The platform's ability to match developers with projects based on their actual coding abilities rather than just their resume is game-changing."
           />
         </div>
       </div>
