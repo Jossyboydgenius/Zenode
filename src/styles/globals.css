@@ -89,7 +89,7 @@
   }
 
   .nav-glass {
-    @apply bg-gray-900/80 backdrop-blur-md border-b border-white/10;
+    @apply backdrop-blur-md border-b border-white/10;
   }
 
   .magical-border {
