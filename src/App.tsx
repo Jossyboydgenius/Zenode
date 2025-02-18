@@ -13,6 +13,8 @@ import Profile from '@/pages/Profile';
 import Account from '@/pages/Account';
 import Notifications from '@/pages/Notifications';
 import Security from '@/pages/Security';
+import Projects from '@/pages/Projects';
+import Analytics from '@/pages/Analytics';
 import { SidebarProvider } from '@/components/ui/sidebar';
 
 // Protected Route component
@@ -95,6 +97,8 @@ export default function App() {
                   <Route path="/account" element={<Account />} />
                   <Route path="/security" element={<Security />} />
                   <Route path="/notifications" element={<Notifications />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/analytics" element={<Analytics />} />
                 </Routes>
               </SidebarProvider>
             </ProtectedRoute>
