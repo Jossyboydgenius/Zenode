@@ -9,6 +9,10 @@ import LearnToEarnPage from '@/pages/LearnToEarn';
 import LoginPage from '@/pages/Login';
 import SignupPage from '@/pages/Signup';
 import DashboardPage from '@/pages/Dashboard';
+import Profile from '@/pages/Profile';
+import Account from '@/pages/Account';
+import Notifications from '@/pages/Notifications';
+import Security from '@/pages/Security';
 import { SidebarProvider } from '@/components/ui/sidebar';
 
 // Protected Route component
@@ -85,7 +89,13 @@ export default function App() {
           element={
             <ProtectedRoute>
               <SidebarProvider>
-                <DashboardPage />
+                <Routes>
+                  <Route path="/" element={<DashboardPage />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/account" element={<Account />} />
+                  <Route path="/security" element={<Security />} />
+                  <Route path="/notifications" element={<Notifications />} />
+                </Routes>
               </SidebarProvider>
             </ProtectedRoute>
           }
