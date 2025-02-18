@@ -141,6 +141,10 @@
     );
     transform: translateY(50%);
   }
+
+  .pause {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes float {
