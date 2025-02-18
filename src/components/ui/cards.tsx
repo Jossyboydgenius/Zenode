@@ -73,16 +73,18 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ imageSrc, name, role, testimonial }: TestimonialCardProps) {
   return (
-    <div className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-8 rounded-3xl border border-green-500/20 hover:border-green-400/30 transition-all duration-300">
+    <div className="glass-effect p-8 rounded-xl hover:border-green-400/30 transition-all duration-300 transform hover:-translate-y-1">
       <div className="flex flex-col items-center text-center space-y-4">
-        <img 
-          src={imageSrc} 
-          alt={name} 
-          className="w-20 h-20 rounded-full border-2 border-green-400/20"
-        />
+        <div className="p-3 bg-green-500/20 rounded-full">
+          <img 
+            src={imageSrc} 
+            alt={name} 
+            className="w-16 h-16 rounded-full border-2 border-green-400/20"
+          />
+        </div>
         <div>
           <h3 className="text-xl font-semibold text-white">{name}</h3>
-          <p className="gradient-text">{role}</p>
+          <p className="text-green-400">{role}</p>
         </div>
         <p className="text-gray-400 leading-relaxed">{testimonial}</p>
       </div>
