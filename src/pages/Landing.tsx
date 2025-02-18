@@ -8,11 +8,11 @@ export default function LandingPage() {
       {/* Hero Section */}
       <div className="relative pt-32 bg-black">
         {/* Gradient overlay - inverted direction */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-green-900/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-green-900/50"></div>
         
-        {/* Light curve at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-32">
-          <div className="absolute inset-0 bg-curve-light"></div>
+        {/* Curved line */}
+        <div className="curve-container">
+          <div className="curved-line"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
