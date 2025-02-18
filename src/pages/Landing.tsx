@@ -88,8 +88,7 @@ export default function LandingPage() {
       {/* Dashboard Preview Section */}
       <div className="relative w-full bg-black py-32">
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-green-900/40"></div>
-        
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-green-900/60"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 text-green-400 mb-4">
@@ -117,7 +116,7 @@ export default function LandingPage() {
 
       {/* Trusted By Section */}
       <div className="relative w-full bg-black py-16">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-green-900/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-green-900/30 to-transparent"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h3 className="text-center text-gray-400 mb-8">Trusted by:</h3>
           <div className="relative overflow-hidden">
