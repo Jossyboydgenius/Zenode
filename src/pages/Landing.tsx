@@ -6,9 +6,9 @@ export default function LandingPage() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative pt-32">
+      <div className="relative pt-32 bg-black">
         {/* Gradient overlay - inverted direction */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-green-900/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-green-900/80"></div>
         
         {/* Light curve at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-32">
