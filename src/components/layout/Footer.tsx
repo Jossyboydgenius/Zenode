@@ -3,8 +3,9 @@ import { Award, Github, Twitter, Linkedin } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="glass-effect py-12 mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative w-full bg-black/95">
+      <div className="absolute inset-0 bg-gradient-to-b from-green-900/5 to-green-900/20"></div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div className="col-span-1">
@@ -58,8 +59,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="pt-8 border-t border-gray-800">
+        {/* Bottom Section with subtle separator */}
+        <div className="pt-8 border-t border-green-900/30">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
               © 2025 Zenode. All rights reserved.
