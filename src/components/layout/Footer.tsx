@@ -1,5 +1,35 @@
-import React from 'react';
+'use client';
+
 import { Award, Github, Twitter, Linkedin } from 'lucide-react';
+import Link from 'next/link';
+
+const footerLinks = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'About Us', href: '/about', disabled: true },
+      { label: 'How it Works', href: '/how-it-works' },
+      { label: 'Learn to Earn', href: '/learn-to-earn' },
+      { label: 'Playground', href: '/playground' },
+      { label: 'Documentation', href: '/docs', disabled: true },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Blog', href: '/blog', disabled: true },
+      { label: 'FAQ', href: '/faq', disabled: true },
+      { label: 'Support', href: '/support', disabled: true },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: '/privacy', disabled: true },
+      { label: 'Terms of Service', href: '/terms', disabled: true },
+    ],
+  },
+];
 
 export function Footer() {
   return (
@@ -21,54 +51,54 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="col-span-1">
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">How it Works</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Learn to Earn</a></li>
-              <li><a href="/playground" className="text-gray-400 hover:text-green-400 transition-colors">Playground</a></li>
-            </ul>
-          </div>
+          {footerLinks.map((section, index) => (
+            <div key={index} className="space-y-4">
+              <h3 className="text-white font-semibold">{section.title}</h3>
+              <ul className="space-y-2">
+                {section.links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
+                    {link.disabled ? (
+                      <span className="text-gray-500 cursor-not-allowed">{link.label}</span>
+                    ) : (
+                      <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-          {/* Resources */}
-          <div className="col-span-1">
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Documentation</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">API Reference</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Community</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Support</a></li>
-            </ul>
-          </div>
-
-          {/* Connect */}
+          {/* Social Links */}
           <div className="col-span-1">
             <h3 className="text-white font-semibold mb-4">Connect</h3>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
                 <Github className="w-5 h-5 text-green-400" />
               </a>
-              <a href="#" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
                 <Twitter className="w-5 h-5 text-green-400" />
               </a>
-              <a href="#" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
                 <Linkedin className="w-5 h-5 text-green-400" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section with subtle separator */}
-        <div className="pt-8 border-t border-green-900/30">
+        {/* Bottom Bar */}
+        <div className="pt-8 mt-8 border-t border-green-500/10">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 Zenode. All rights reserved.
-            </div>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Terms of Service</a>
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Cookie Policy</a>
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} Zenode. All rights reserved.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              {footerLinks.map((section, index) => (
+                <Link key={index} href={section.links[0].href} className="text-gray-400 hover:text-green-400 text-sm transition-colors">
+                  {section.title}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

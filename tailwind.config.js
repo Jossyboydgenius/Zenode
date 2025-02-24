@@ -1,13 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ['class'],
-	content: ['./src/**/*.{ts,tsx}'],
+	content: [
+		'./src/pages/**/*.{ts,tsx}',
+		'./src/components/**/*.{ts,tsx}',
+		'./src/app/**/*.{ts,tsx}',
+		'./src/**/*.{ts,tsx}',
+	],
 	theme: {
+		container: {
+			center: true,
+			padding: "2rem",
+			screens: {
+				"2xl": "1400px",
+			},
+		},
 		extend: {
 			animation: {
 				'collapsible-down': 'collapsible-down 0.2s ease-out',
 				'collapsible-up': 'collapsible-up 0.2s ease-out',
 				scroll: 'scroll 25s linear infinite',
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out',
 			},
 			keyframes: {
 				'collapsible-down': {
@@ -33,6 +47,14 @@ module.exports = {
 				scroll: {
 					'0%': { transform: 'translateX(0)' },
 					'100%': { transform: 'translateX(-33.33333%)' }
+				},
+				'accordion-down': {
+					from: { height: 0 },
+					to: { height: "var(--radix-accordion-content-height)" },
+				},
+				'accordion-up': {
+					from: { height: "var(--radix-accordion-content-height)" },
+					to: { height: 0 },
 				},
 			},
 			colors: {
