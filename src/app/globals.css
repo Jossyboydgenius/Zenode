@@ -70,6 +70,14 @@
   .magical-border > * {
     @apply relative z-[2];
   }
+
+  /* .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  } */
 }
 
 @layer utilities {
@@ -130,6 +138,11 @@
   0% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.2); }
   50% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.4); }
   100% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.2); }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 @keyframes collapsible-down {
