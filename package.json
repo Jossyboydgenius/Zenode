@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.0",
+    "antd": "^5.0.0",
+    "ahooks": "^3.7.0",
+    "pino-pretty": "^10.3.1",
     "@heroicons/react": "^2.2.0",
     "@particle-network/connectkit": "^2.0.15",
     "@radix-ui/react-avatar": "^1.1.3",
