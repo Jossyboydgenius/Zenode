@@ -119,32 +119,40 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h3 className="text-center text-gray-400 mb-8">Trusted by:</h3>
           <div className="relative overflow-hidden">
-            <div className="flex items-center space-x-8 animate-scroll hover:pause">
+            <div className="flex items-center space-x-8">
               {/* First set of logos */}
-              <div className="flex items-center space-x-8 shrink-0">
-                <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/aragon-ant-logo.png" alt="Aragon" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/balancer-bal-logo.png" alt="Balancer" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="Ethereum" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/aave-aave-logo.png" alt="Aave" className="h-8 w-auto" />
+              <div className="flex items-center space-x-8 shrink-0 animate-scroll">
+                {[...Array(3)].map((_, index) => (
+                  <div key={index} className="flex items-center space-x-8 shrink-0">
+                    <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/aragon-ant-logo.png" alt="Aragon" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/balancer-bal-logo.png" alt="Balancer" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="Ethereum" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/aave-aave-logo.png" alt="Aave" className="h-8 w-auto" />
+                  </div>
+                ))}
               </div>
-              {/* Second set of logos (duplicate) */}
-              <div className="flex items-center space-x-8 shrink-0">
-                <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/aragon-ant-logo.png" alt="Aragon" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/balancer-bal-logo.png" alt="Balancer" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="Ethereum" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap" className="h-8 w-auto" />
-                <img src="https://cryptologos.cc/logos/aave-aave-logo.png" alt="Aave" className="h-8 w-auto" />
+              {/* Duplicate for seamless scrolling */}
+              <div className="flex items-center space-x-8 shrink-0 animate-scroll">
+                {[...Array(3)].map((_, index) => (
+                  <div key={`duplicate-${index}`} className="flex items-center space-x-8 shrink-0">
+                    <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/aragon-ant-logo.png" alt="Aragon" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/balancer-bal-logo.png" alt="Balancer" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="Ethereum" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap" className="h-8 w-auto" />
+                    <img src="https://cryptologos.cc/logos/aave-aave-logo.png" alt="Aave" className="h-8 w-auto" />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
