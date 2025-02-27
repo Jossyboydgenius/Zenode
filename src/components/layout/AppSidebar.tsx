@@ -55,6 +55,29 @@ const data = {
       ],
     },
     {
+      title: "Projects",
+      url: "/projects",
+      icon: Code,
+      items: [
+        {
+          title: "Smart Contracts",
+          url: "/projects/smart-contracts",
+        },
+        {
+          title: "DeFi Integration",
+          url: "/projects/defi",
+        },
+        {
+          title: "NFT Marketplace",
+          url: "/projects/nft",
+        },
+        {
+          title: "Token Bridge",
+          url: "/projects/token-bridge",
+        },
+      ],
+    },
+    {
       title: "Playground",
       url: "/playground",
       icon: Code,
