@@ -30,8 +30,8 @@ export function Navbar() {
                   </Link>
                </div>
                <div className="flex items-center space-x-4">
+                  {/* Connect button is handled by ParticleConnectkit */}
                   <button 
-                     onClick={() => router.push('/login')}
                      className="bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
                   >
                      Connect
