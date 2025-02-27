@@ -24,7 +24,7 @@ export function Navbar() {
                   <Link href="/learn-to-earn" className="text-gray-300 hover:text-white transition-colors">
                      Learn to Earn
                   </Link>
-                  <Link href="/playground" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <Link href="/play-ground" className="text-gray-300 hover:text-white transition-colors flex items-center">
                      <Code className="w-4 h-4 mr-2" />
                      Playground
                   </Link>
