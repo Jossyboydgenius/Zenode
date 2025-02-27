@@ -15,6 +15,8 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     pathname?.startsWith('/playground') ||
     pathname?.startsWith('/settings') ||
     pathname?.startsWith('/projects') ||
+    pathname?.startsWith('/support') ||
+    pathname?.startsWith('/docs') ||
     // Exact match for /learn but not /learn-to-earn
     pathname === '/learn' ||
     // Any routes under /learn/ but not /learn-to-earn
