@@ -8,7 +8,9 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isAppRoute = pathname?.startsWith('/dashboard') || 
                     pathname?.startsWith('/contributions') || 
-                    pathname?.startsWith('/playground')
+                    pathname?.startsWith('/playground') ||
+                    pathname?.startsWith('/settings') ||
+                    pathname?.startsWith('/learn')
 
   return (
     <>
