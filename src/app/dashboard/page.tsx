@@ -16,11 +16,35 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Activity, Users, GitPullRequest, Trophy, GitCommit, GitPullRequestDraft, MessageSquare, Star, Code } from 'lucide-react';
+import { Activity, Users, GitPullRequest, Trophy, GitCommit, GitPullRequestDraft, MessageSquare, Star, Code, PieChart, LineChart } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CodeEditor } from "@/components/CodeEditor";
 
-export default function Dashboard() {
+const dashboardCards = [
+  {
+    title: "Overview",
+    description: "View your dashboard summary and key metrics",
+    icon: PieChart,
+    url: "/dashboard",
+    stats: "12 Active Projects"
+  },
+  {
+    title: "Projects",
+    description: "Manage and track your ongoing projects",
+    icon: GitPullRequest,
+    url: "/dashboard/projects",
+    stats: "48 Total Projects"
+  },
+  {
+    title: "Analytics",
+    description: "View detailed analytics and insights",
+    icon: LineChart,
+    url: "/dashboard/analytics",
+    stats: "Real-time Data"
+  }
+]
+
+export default function DashboardPage() {
   const [showEditor, setShowEditor] = React.useState(false);
 
   return (
@@ -34,63 +58,32 @@ export default function Dashboard() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Overview</BreadcrumbPage>
+                  <BreadcrumbPage>Dashboard</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          {/* Dashboard Stats */}
-          <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-            <div className="glass-effect p-6 rounded-xl">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-500/20 rounded-lg">
-                  <Activity className="w-6 h-6 text-green-400" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {dashboardCards.map((card) => (
+              <a 
+                key={card.title}
+                href={card.url}
+                className="glass-effect p-6 rounded-xl hover:bg-white/5 transition-colors"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-2 bg-green-500/20 rounded-lg">
+                    <card.icon className="w-6 h-6 text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">{card.title}</h3>
+                    <p className="text-sm text-gray-400">{card.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-400">Active Projects</p>
-                  <h3 className="text-2xl font-bold text-white">12</h3>
-                </div>
-              </div>
-            </div>
-            <div className="glass-effect p-6 rounded-xl">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-500/20 rounded-lg">
-                  <GitPullRequest className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Pull Requests</p>
-                  <h3 className="text-2xl font-bold text-white">48</h3>
-                </div>
-              </div>
-            </div>
-            <div className="glass-effect p-6 rounded-xl">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-500/20 rounded-lg">
-                  <Trophy className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">XP Earned</p>
-                  <h3 className="text-2xl font-bold text-white">2,450</h3>
-                </div>
-              </div>
-            </div>
-            <div className="glass-effect p-6 rounded-xl">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-500/20 rounded-lg">
-                  <Users className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Contributors</p>
-                  <h3 className="text-2xl font-bold text-white">156</h3>
-                </div>
-              </div>
-            </div>
+                <div className="text-sm text-gray-500">{card.stats}</div>
+              </a>
+            ))}
           </div>
           
           {/* Main Dashboard Content */}
