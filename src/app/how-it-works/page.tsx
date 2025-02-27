@@ -71,8 +71,8 @@ export default function HowItWorksPage() {
         {/* CTA Section */}
         <div className="text-center">
           <Link 
-            href="/auth/signin"
-            className="magical-border text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center mx-auto group"
+            href="/dashboard"
+            className="magical-border text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center group"
           >
             <span className="relative z-10 flex items-center">
               Start Contributing Now
