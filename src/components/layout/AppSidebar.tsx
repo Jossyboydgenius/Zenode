@@ -84,7 +84,7 @@ const data = {
       items: [
         {
           title: "My PRs",
-          url: "/contributions/prs",
+          url: "/contributions/my-prs",
         },
         {
           title: "Issues",
