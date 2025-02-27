@@ -1,20 +1,17 @@
+"use client"
+
 import * as React from "react"
 import {
   BookOpen,
-  // Bot,
-  // Command,
-  // Frame,
   LifeBuoy,
-  // Map,
   PieChart,
-  // Send,
   Settings2,
-  // Terminal,
   Award,
   GitPullRequest,
   Code,
   Wallet,
   Image,
+  ArrowLeftRight,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav/NavMain"
@@ -46,7 +43,7 @@ const data = {
       items: [
         {
           title: "Overview",
-          url: "/dashboard",
+          url: "/dashboard/overview",
         },
         {
           title: "Projects",
@@ -56,6 +53,29 @@ const data = {
           title: "Analytics",
           url: "/dashboard/analytics",
         },
+      ],
+    },
+    {
+      title: "Projects",
+      url: "/projects",
+      icon: Code,
+      items: [
+        {
+          title: "Smart Contracts",
+          url: "/projects/smart-contracts",
+        },
+        {
+          title: "DeFi Integration",
+          url: "/projects/defi",
+        },
+        {
+          title: "NFT Marketplace",
+          url: "/projects/nft",
+        },
+        {
+          title: "Token Bridge",
+          url: "/projects/token-bridge",
+        }
       ],
     },
     {
@@ -88,7 +108,7 @@ const data = {
       items: [
         {
           title: "My PRs",
-          url: "/contributions/prs",
+          url: "/contributions/my-prs",
         },
         {
           title: "Issues",
@@ -136,6 +156,10 @@ const data = {
           title: "Notifications",
           url: "/settings/notifications",
         },
+        {
+          title: "Security",
+          url: "/settings/security",
+        }
       ],
     },
   ],
@@ -167,6 +191,11 @@ const data = {
       url: "/projects/nft",
       icon: Image,
     },
+    {
+      name: "Token Bridge",
+      url: "/projects/token-bridge",
+      icon: ArrowLeftRight,
+    }
   ],
 }
 

@@ -1,74 +1,109 @@
-import React from 'react';
-import { Award, Github, Twitter, Linkedin } from 'lucide-react';
+'use client';
+
+import Link from 'next/link';
+import { Award, Github, Twitter } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="relative w-full bg-black/95">
-      <div className="absolute inset-0 bg-gradient-to-b from-green-900/5 to-green-900/20"></div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand Section */}
-          <div className="col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="p-2 bg-green-500/20 rounded-lg">
+    <footer className="w-full border-t border-white/10 bg-black/30 backdrop-blur-xl">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+          {/* Logo and Description */}
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="p-2 rounded-lg">
                 <Award className="w-6 h-6 text-green-400" />
               </div>
-              <span className="text-xl font-bold gradient-text">Zenode</span>
-            </div>
-            <p className="text-gray-400 text-sm">
-              Building the future of Web3 development, one contribution at a time.
+              <span className="text-xl font-bold">Zenode</span>
+            </Link>
+            <p className="text-sm text-gray-400">
+              Empowering developers with next-generation blockchain development tools and infrastructure.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div className="col-span-1">
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">How it Works</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Learn to Earn</a></li>
-              <li><a href="/playground" className="text-gray-400 hover:text-green-400 transition-colors">Playground</a></li>
+              <li>
+                <Link href="/how-it-works" className="text-sm text-gray-400 hover:text-white">
+                  How it Works
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn-to-earn" className="text-sm text-gray-400 hover:text-white">
+                  Learn to Earn
+                </Link>
+              </li>
+              <li>
+                <Link href="/playground" className="text-sm text-gray-400 hover:text-white">
+                  Playground
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Resources */}
-          <div className="col-span-1">
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">Resources</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Documentation</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">API Reference</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Community</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Support</a></li>
+              <li>
+                <Link href="/docs" className="text-sm text-gray-400 hover:text-white">
+                  Documentation
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-sm text-gray-400 hover:text-white">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-sm text-gray-400 hover:text-white">
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Connect */}
-          <div className="col-span-1">
-            <h3 className="text-white font-semibold mb-4">Connect</h3>
+          {/* Social Links */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">Connect</h3>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
-                <Github className="w-5 h-5 text-green-400" />
+              <a
+                href="https://github.com/zenode"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white"
+              >
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
               </a>
-              <a href="#" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
-                <Twitter className="w-5 h-5 text-green-400" />
-              </a>
-              <a href="#" className="p-2 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-colors">
-                <Linkedin className="w-5 h-5 text-green-400" />
+              <a
+                href="https://twitter.com/zenode"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white"
+              >
+                <Twitter className="h-5 w-5" />
+                <span className="sr-only">Twitter</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section with subtle separator */}
-        <div className="pt-8 border-t border-green-900/30">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 Zenode. All rights reserved.
-            </div>
+        {/* Bottom Section */}
+        <div className="mt-12 border-t border-white/10 pt-8">
+          <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+            <p className="text-sm text-gray-400">
+              © {new Date().getFullYear()} Zenode. All rights reserved.
+            </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Terms of Service</a>
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Cookie Policy</a>
+              <Link href="/privacy" className="text-sm text-gray-400 hover:text-white">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-sm text-gray-400 hover:text-white">
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>
