@@ -1,8 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { Github, Twitter } from 'lucide-react';
+import { Award, Github, Twitter } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -12,13 +11,9 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src="/logo.png"
-                alt="Zenode Logo"
-                width={32}
-                height={32}
-                className="h-8 w-8"
-              />
+              <div className="p-2 rounded-lg">
+                <Award className="w-6 h-6 text-green-400" />
+              </div>
               <span className="text-xl font-bold">Zenode</span>
             </Link>
             <p className="text-sm text-gray-400">
