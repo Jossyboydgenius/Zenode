@@ -1,30 +1,31 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import Image from "next/image"
 import {
-  PieChart,
-  Code,
-  GitPullRequest,
   BookOpen,
-  Settings2,
   LifeBuoy,
+  PieChart,
+  Settings2,
+  Award,
+  GitPullRequest,
+  Code,
   Wallet,
-  Image as LucideImage,
+  Image,
 } from "lucide-react"
 
+import { NavMain } from "@/components/nav/NavMain"
+import { NavProjects } from "@/components/nav/NavProjects"
+import { NavSecondary } from "@/components/nav/NavSecondary"
+import { NavUser } from "@/components/nav/NavUser"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-
-import { NavUser } from "@/components/nav/NavUser"
 
 const data = {
   user: {
@@ -37,14 +38,11 @@ const data = {
       title: "Dashboard",
       url: "/dashboard",
       icon: PieChart,
+      isActive: true,
       items: [
         {
           title: "Overview",
           url: "/dashboard",
-        },
-        {
-          title: "Profile",
-          url: "/dashboard/profile",
         },
         {
           title: "Projects",
@@ -163,55 +161,35 @@ const data = {
     {
       name: "NFT Marketplace",
       url: "/projects/nft",
-      icon: LucideImage,
+      icon: Image,
     },
   ],
 }
 
-export function AppSidebar() {
-  const pathname = usePathname() || ""
-
-  // Memoize the navigation items to prevent unnecessary re-renders
-  const navigationItems = React.useMemo(() => data.navMain.map((item) => (
-    <SidebarMenuItem key={item.title}>
-      <div className="flex items-center gap-2 px-4 py-2">
-        {item.icon && <item.icon className="w-5 h-5" />}
-        <span>{item.title}</span>
-      </div>
-      {item.items && (
-        <div className="pl-4 space-y-1">
-          {item.items.map((subItem) => (
-            <Link
-              key={subItem.title}
-              href={subItem.url}
-              className={`block px-4 py-2 text-sm rounded-lg ${
-                pathname === subItem.url
-                  ? "text-white bg-gray-800"
-                  : "text-gray-400 hover:text-white hover:bg-gray-800"
-              }`}
-            >
-              {subItem.title}
-            </Link>
-          ))}
-        </div>
-      )}
-    </SidebarMenuItem>
-  )), [pathname])
-
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar>
+    <Sidebar variant="inset" {...props}>
       <SidebarHeader>
-        <Link href="/" className="flex items-center gap-2 px-2">
-          <div className="relative w-8 h-8">
-            <Image src="/logo.svg" alt="Logo" fill className="object-contain" priority />
-          </div>
-          <span className="font-semibold">Zenode</span>
-        </Link>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <a href="#">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-green-500/20">
+                  <Award className="size-4 text-green-400" />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold gradient-text">Zenode</span>
+                  <span className="truncate text-xs text-gray-400">Web3 Development</span>
+                </div>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarMenu>
-          {navigationItems}
-        </SidebarMenu>
+        <NavMain items={data.navMain} />
+        <NavProjects projects={data.projects} />
+        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
