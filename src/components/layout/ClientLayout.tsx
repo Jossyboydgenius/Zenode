@@ -10,7 +10,8 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
                     pathname?.startsWith('/contributions') || 
                     pathname?.startsWith('/playground') ||
                     pathname?.startsWith('/settings') ||
-                    pathname?.startsWith('/learn')
+                    pathname?.startsWith('/learn') ||
+                    pathname?.startsWith('/projects')
 
   return (
     <>
