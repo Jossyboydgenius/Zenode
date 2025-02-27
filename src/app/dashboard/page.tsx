@@ -1,63 +1,54 @@
-import { Activity, Users, GitPullRequest, Trophy } from 'lucide-react';
+'use client'
 
-export default function DashboardPage() {
+import { AppSidebar } from "@/components/app-sidebar"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import { Separator } from "@/components/ui/separator"
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar"
+
+export default function Page() {
   return (
-    <div className="flex flex-1 flex-col gap-4">
-      {/* Dashboard Stats */}
-      <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-        <div className="glass-effect p-6 rounded-xl">
-          <div className="flex items-center gap-4">
-            <div className="p-2 bg-green-500/20 rounded-lg">
-              <Activity className="w-6 h-6 text-green-400" />
-            </div>
-            <div>
-              <p className="text-sm text-gray-400">Active Projects</p>
-              <h3 className="text-2xl font-bold text-white">12</h3>
-            </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2">
+          <div className="flex items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
           </div>
-        </div>
-        <div className="glass-effect p-6 rounded-xl">
-          <div className="flex items-center gap-4">
-            <div className="p-2 bg-green-500/20 rounded-lg">
-              <GitPullRequest className="w-6 h-6 text-green-400" />
-            </div>
-            <div>
-              <p className="text-sm text-gray-400">Pull Requests</p>
-              <h3 className="text-2xl font-bold text-white">48</h3>
-            </div>
+        </header>
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
           </div>
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
-        <div className="glass-effect p-6 rounded-xl">
-          <div className="flex items-center gap-4">
-            <div className="p-2 bg-green-500/20 rounded-lg">
-              <Trophy className="w-6 h-6 text-green-400" />
-            </div>
-            <div>
-              <p className="text-sm text-gray-400">XP Earned</p>
-              <h3 className="text-2xl font-bold text-white">2,450</h3>
-            </div>
-          </div>
-        </div>
-        <div className="glass-effect p-6 rounded-xl">
-          <div className="flex items-center gap-4">
-            <div className="p-2 bg-green-500/20 rounded-lg">
-              <Users className="w-6 h-6 text-green-400" />
-            </div>
-            <div>
-              <p className="text-sm text-gray-400">Contributors</p>
-              <h3 className="text-2xl font-bold text-white">156</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Recent Activity */}
-      <div className="min-h-[calc(100vh-16rem)] rounded-xl glass-effect p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-semibold text-white">Recent Activity</h2>
-        </div>
-        {/* Activity content */}
-      </div>
-    </div>
-  );
-} 
+      </SidebarInset>
+    </SidebarProvider>
+  )
+}
