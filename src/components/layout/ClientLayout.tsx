@@ -6,15 +6,15 @@ import { Footer } from './Footer'
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const isDashboard = pathname?.startsWith('/dashboard')
+  const isAppRoute = pathname?.startsWith('/dashboard') || pathname?.startsWith('/contributions')
 
   return (
     <>
-      {!isDashboard && <Navbar />}
+      {!isAppRoute && <Navbar />}
       <main className="flex-grow">
         {children}
       </main>
-      {!isDashboard && <Footer />}
+      {!isAppRoute && <Footer />}
     </>
   )
 } 
