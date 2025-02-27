@@ -1,10 +1,13 @@
+'use client'
+
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { FcGoogle } from "react-icons/fc";
 import { LuGithub } from "react-icons/lu";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const router = useRouter()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,8 +15,8 @@ export default function Login() {
   // TODO: REMOVE THIS AND IMPLEMENT PROPER AUTHENTICATION
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // For testing: accept any email/password combination
-    navigate('/dashboard');
+    // Add your login logic here
+    router.push('/dashboard')
   };
 
   return (
@@ -67,7 +70,7 @@ export default function Login() {
               <label htmlFor="password" className="text-sm font-medium text-gray-200">
                 Password
               </label>
-              <Link to="/forgot-password" className="text-sm text-green-400 hover:text-green-300">
+              <Link href="/forgot-password" className="text-sm text-green-400 hover:text-green-300">
                 Forgot password?
               </Link>
             </div>
@@ -90,18 +93,18 @@ export default function Login() {
 
         <p className="text-center text-sm text-gray-400">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-green-400 hover:text-green-300">
+          <Link href="/signup" className="text-green-400 hover:text-green-300">
             Sign up
           </Link>
         </p>
 
         <p className="text-center text-xs text-gray-500">
           By clicking continue, you agree to our{' '}
-          <Link to="/terms" className="text-green-400 hover:text-green-300">
+          <Link href="/terms" className="text-green-400 hover:text-green-300">
             Terms of Service
           </Link>{' '}
           and{' '}
-          <Link to="/privacy" className="text-green-400 hover:text-green-300">
+          <Link href="/privacy" className="text-green-400 hover:text-green-300">
             Privacy Policy
           </Link>
           .
