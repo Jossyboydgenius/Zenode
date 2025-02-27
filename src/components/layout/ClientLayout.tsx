@@ -6,12 +6,19 @@ import { Footer } from './Footer'
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const isAppRoute = pathname?.startsWith('/dashboard') || 
-                    pathname?.startsWith('/contributions') || 
-                    pathname?.startsWith('/playground') ||
-                    pathname?.startsWith('/settings') ||
-                    pathname?.startsWith('/learn') ||
-                    pathname?.startsWith('/projects')
+  
+  // Helper function to check if it's an app route
+  const isAppRoute = 
+    // Main app routes
+    pathname?.startsWith('/dashboard') || 
+    pathname?.startsWith('/contributions') || 
+    pathname?.startsWith('/playground') ||
+    pathname?.startsWith('/settings') ||
+    pathname?.startsWith('/projects') ||
+    // Exact match for /learn but not /learn-to-earn
+    pathname === '/learn' ||
+    // Any routes under /learn/ but not /learn-to-earn
+    (pathname?.startsWith('/learn/') && !pathname?.startsWith('/learn-to-earn'))
 
   return (
     <>
