@@ -16,8 +16,57 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Code, GitPullRequest, Star, Users, Folder, Clock, ArrowUpRight } from 'lucide-react'
+import { Code, GitPullRequest, Star, Users, Folder, Clock, ArrowUpRight, Wallet, Image } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+const projects = [
+  {
+    name: "Smart Contract Development",
+    description: "Building next-gen DeFi protocols",
+    icon: Code,
+    contributors: [
+      { image: "/avatars/01.png", fallback: "JD" },
+      { image: "/avatars/02.png", fallback: "AJ" },
+      { image: "/avatars/03.png", fallback: "KN" },
+    ],
+    updatedAgo: "2h",
+    openPRs: 8
+  },
+  {
+    name: "DeFi Integration",
+    description: "Integrating multiple DeFi protocols",
+    icon: Wallet,
+    contributors: [
+      { image: "/avatars/04.png", fallback: "EW" },
+      { image: "/avatars/05.png", fallback: "RK" },
+    ],
+    updatedAgo: "5h",
+    openPRs: 5
+  },
+  {
+    name: "NFT Marketplace",
+    description: "Building a decentralized NFT marketplace",
+    icon: Image,
+    contributors: [
+      { image: "/avatars/06.png", fallback: "ML" },
+      { image: "/avatars/07.png", fallback: "SJ" },
+      { image: "/avatars/08.png", fallback: "TK" },
+    ],
+    updatedAgo: "1d",
+    openPRs: 12
+  },
+  {
+    name: "Token Bridge",
+    description: "Cross-chain token bridge implementation",
+    icon: Code,
+    contributors: [
+      { image: "/avatars/09.png", fallback: "RJ" },
+      { image: "/avatars/10.png", fallback: "AM" },
+    ],
+    updatedAgo: "3d",
+    openPRs: 3
+  }
+]
 
 export default function ProjectsPage() {
   return (
@@ -103,49 +152,42 @@ export default function ProjectsPage() {
             </div>
 
             <div className="space-y-4">
-              {/* Project Item */}
-              <div className="glass-effect p-4 rounded-lg">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Code className="w-5 h-5 text-green-400" />
-                    <div>
-                      <h3 className="text-white font-medium">Smart Contract Development</h3>
-                      <p className="text-sm text-gray-400">Building next-gen DeFi protocols</p>
+              {projects.map((project, index) => (
+                <div key={index} className="glass-effect p-4 rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <project.icon className="w-5 h-5 text-green-400" />
+                      <div>
+                        <h3 className="text-white font-medium">{project.name}</h3>
+                        <p className="text-sm text-gray-400">{project.description}</p>
+                      </div>
+                    </div>
+                    <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
+                      <ArrowUpRight className="w-5 h-5 text-gray-400" />
+                    </button>
+                  </div>
+                  <div className="flex items-center gap-4 mt-4">
+                    <div className="flex -space-x-2">
+                      {project.contributors.map((contributor, i) => (
+                        <Avatar key={i} className="w-6 h-6 border-2 border-background">
+                          <AvatarImage src={contributor.image} />
+                          <AvatarFallback>{contributor.fallback}</AvatarFallback>
+                        </Avatar>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        Updated {project.updatedAgo} ago
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <GitPullRequest className="w-4 h-4" />
+                        {project.openPRs} open PRs
+                      </span>
                     </div>
                   </div>
-                  <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
-                    <ArrowUpRight className="w-5 h-5 text-gray-400" />
-                  </button>
                 </div>
-                <div className="flex items-center gap-4 mt-4">
-                  <div className="flex -space-x-2">
-                    <Avatar className="w-6 h-6 border-2 border-background">
-                      <AvatarImage src="/avatars/01.png" />
-                      <AvatarFallback>JD</AvatarFallback>
-                    </Avatar>
-                    <Avatar className="w-6 h-6 border-2 border-background">
-                      <AvatarImage src="/avatars/02.png" />
-                      <AvatarFallback>AJ</AvatarFallback>
-                    </Avatar>
-                    <Avatar className="w-6 h-6 border-2 border-background">
-                      <AvatarImage src="/avatars/03.png" />
-                      <AvatarFallback>KN</AvatarFallback>
-                    </Avatar>
-                  </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      Updated 2h ago
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <GitPullRequest className="w-4 h-4" />
-                      8 open PRs
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* More Project Items... */}
+              ))}
             </div>
           </div>
         </div>
