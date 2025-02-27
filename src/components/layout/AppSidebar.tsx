@@ -72,14 +72,8 @@ const data = {
           url: "/projects/nft",
         },
         {
-          title: "More",
-          url: "#",
-          items: [
-            {
-              title: "Token Bridge",
-              url: "/projects/token-bridge",
-            }
-          ]
+          title: "Token Bridge",
+          url: "/projects/token-bridge",
         }
       ],
     },
