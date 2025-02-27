@@ -16,7 +16,63 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { LineChart, BarChart, PieChart, TrendingUp, ArrowUpRight, Activity, Users, GitPullRequest } from 'lucide-react'
+import { TrendingUp, ArrowUpRight, Activity, Users, GitPullRequest } from 'lucide-react'
+import { ResponsiveLine } from '@nivo/line'
+import { ResponsivePie } from '@nivo/pie'
+import { ResponsiveBar } from '@nivo/bar'
+import GitHubCalendar from 'react-github-calendar'
+
+// Sample data for the line chart
+const activityData = [
+  {
+    id: "contributions",
+    color: "hsl(142, 70%, 50%)",
+    data: [
+      { x: "Jan", y: 120 },
+      { x: "Feb", y: 140 },
+      { x: "Mar", y: 180 },
+      { x: "Apr", y: 160 },
+      { x: "May", y: 220 },
+      { x: "Jun", y: 240 },
+      { x: "Jul", y: 280 },
+      { x: "Aug", y: 260 },
+      { x: "Sep", y: 300 },
+      { x: "Oct", y: 320 },
+      { x: "Nov", y: 340 },
+      { x: "Dec", y: 360 },
+    ]
+  }
+]
+
+// Sample data for the pie chart
+const contributionTypes = [
+  { id: "Pull Requests", value: 45, color: "hsl(142, 70%, 50%)" },
+  { id: "Issues", value: 25, color: "hsl(352, 70%, 50%)" },
+  { id: "Code Reviews", value: 20, color: "hsl(262, 70%, 50%)" },
+  { id: "Documentation", value: 10, color: "hsl(22, 70%, 50%)" },
+]
+
+// Sample data for the bar chart
+const projectPerformance = [
+  {
+    project: "Smart Contracts",
+    "Pull Requests": 30,
+    "Issues": 15,
+    "Code Reviews": 25,
+  },
+  {
+    project: "DeFi Integration",
+    "Pull Requests": 25,
+    "Issues": 20,
+    "Code Reviews": 15,
+  },
+  {
+    project: "NFT Marketplace",
+    "Pull Requests": 20,
+    "Issues": 10,
+    "Code Reviews": 30,
+  },
+]
 
 export default function AnalyticsPage() {
   return (
@@ -89,6 +145,29 @@ export default function AnalyticsPage() {
             </div>
           </div>
 
+          {/* GitHub-style Contribution Graph */}
+          <div className="glass-effect p-6 rounded-xl">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-lg font-semibold text-white">Contribution Activity</h3>
+                <p className="text-sm text-gray-400">6,392 contributions in the last year</p>
+              </div>
+            </div>
+            <div className="py-4">
+              <GitHubCalendar
+                username="johndoe"
+                colorScheme="dark"
+                labels={{
+                  totalCount: '{{count}} contributions in the last year',
+                }}
+                style={{
+                  color: '#9CA3AF',
+                  backgroundColor: 'transparent',
+                }}
+              />
+            </div>
+          </div>
+
           {/* Analytics Charts */}
           <div className="grid gap-4 md:grid-cols-2">
             {/* Activity Chart */}
@@ -102,9 +181,59 @@ export default function AnalyticsPage() {
                   <ArrowUpRight className="w-5 h-5 text-gray-400" />
                 </button>
               </div>
-              <div className="h-[300px] flex items-center justify-center">
-                <LineChart className="w-12 h-12 text-gray-600" />
-                <span className="text-sm text-gray-500 ml-2">Chart placeholder</span>
+              <div className="h-[300px]">
+                <ResponsiveLine
+                  data={activityData}
+                  margin={{ top: 20, right: 20, bottom: 50, left: 50 }}
+                  xScale={{ type: 'point' }}
+                  yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
+                  curve="natural"
+                  axisTop={null}
+                  axisRight={null}
+                  axisBottom={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: 'Month',
+                    legendOffset: 36,
+                    legendPosition: 'middle'
+                  }}
+                  axisLeft={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: 'Contributions',
+                    legendOffset: -40,
+                    legendPosition: 'middle'
+                  }}
+                  enableGridX={false}
+                  enableGridY={false}
+                  pointSize={10}
+                  pointColor={{ theme: 'background' }}
+                  pointBorderWidth={2}
+                  pointBorderColor={{ from: 'serieColor' }}
+                  pointLabelYOffset={-12}
+                  useMesh={true}
+                  theme={{
+                    axis: {
+                      ticks: {
+                        text: {
+                          fill: '#9CA3AF'
+                        }
+                      },
+                      legend: {
+                        text: {
+                          fill: '#9CA3AF'
+                        }
+                      }
+                    },
+                    grid: {
+                      line: {
+                        stroke: '#1F2937'
+                      }
+                    }
+                  }}
+                />
               </div>
             </div>
 
@@ -119,9 +248,30 @@ export default function AnalyticsPage() {
                   <ArrowUpRight className="w-5 h-5 text-gray-400" />
                 </button>
               </div>
-              <div className="h-[300px] flex items-center justify-center">
-                <PieChart className="w-12 h-12 text-gray-600" />
-                <span className="text-sm text-gray-500 ml-2">Chart placeholder</span>
+              <div className="h-[300px]">
+                <ResponsivePie
+                  data={contributionTypes}
+                  margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                  innerRadius={0.5}
+                  padAngle={0.7}
+                  cornerRadius={3}
+                  activeOuterRadiusOffset={8}
+                  borderWidth={1}
+                  borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
+                  arcLinkLabelsSkipAngle={10}
+                  arcLinkLabelsTextColor="#9CA3AF"
+                  arcLinkLabelsThickness={2}
+                  arcLinkLabelsColor={{ from: 'color' }}
+                  arcLabelsSkipAngle={10}
+                  arcLabelsTextColor="#FFFFFF"
+                  theme={{
+                    labels: {
+                      text: {
+                        fill: '#FFFFFF'
+                      }
+                    }
+                  }}
+                />
               </div>
             </div>
 
@@ -136,9 +286,82 @@ export default function AnalyticsPage() {
                   <ArrowUpRight className="w-5 h-5 text-gray-400" />
                 </button>
               </div>
-              <div className="h-[300px] flex items-center justify-center">
-                <BarChart className="w-12 h-12 text-gray-600" />
-                <span className="text-sm text-gray-500 ml-2">Chart placeholder</span>
+              <div className="h-[300px]">
+                <ResponsiveBar
+                  data={projectPerformance}
+                  keys={['Pull Requests', 'Issues', 'Code Reviews']}
+                  indexBy="project"
+                  margin={{ top: 20, right: 130, bottom: 50, left: 60 }}
+                  padding={0.3}
+                  valueScale={{ type: 'linear' }}
+                  indexScale={{ type: 'band', round: true }}
+                  colors={{ scheme: 'nivo' }}
+                  borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                  axisTop={null}
+                  axisRight={null}
+                  axisBottom={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: 'Project',
+                    legendPosition: 'middle',
+                    legendOffset: 32
+                  }}
+                  axisLeft={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: 'Count',
+                    legendPosition: 'middle',
+                    legendOffset: -40
+                  }}
+                  labelSkipWidth={12}
+                  labelSkipHeight={12}
+                  labelTextColor="#FFFFFF"
+                  legends={[
+                    {
+                      dataFrom: 'keys',
+                      anchor: 'bottom-right',
+                      direction: 'column',
+                      justify: false,
+                      translateX: 120,
+                      translateY: 0,
+                      itemsSpacing: 2,
+                      itemWidth: 100,
+                      itemHeight: 20,
+                      itemDirection: 'left-to-right',
+                      itemOpacity: 0.85,
+                      symbolSize: 20,
+                      effects: [
+                        {
+                          on: 'hover',
+                          style: {
+                            itemOpacity: 1
+                          }
+                        }
+                      ]
+                    }
+                  ]}
+                  theme={{
+                    axis: {
+                      ticks: {
+                        text: {
+                          fill: '#9CA3AF'
+                        }
+                      },
+                      legend: {
+                        text: {
+                          fill: '#9CA3AF'
+                        }
+                      }
+                    },
+                    legends: {
+                      text: {
+                        fill: '#9CA3AF'
+                      }
+                    }
+                  }}
+                />
               </div>
             </div>
           </div>
