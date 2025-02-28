@@ -184,7 +184,7 @@ export default function Home() {
               buttonText="Land a Job"
             />
             <WhyJoinCard
-              icon={Trophy}
+              icon={Stars}
               title="Enhance Your Skillset And Boost Your Salary"
               description="Become a blockchain developer with Zenode for free. Master Solidity and Rust development."
               buttonText="Upskill Now"
