@@ -50,15 +50,20 @@ interface WhyJoinCardProps {
 
 export function WhyJoinCard({ icon: Icon, title, description, buttonText }: WhyJoinCardProps) {
   return (
-    <div className="glass-effect p-6 rounded-xl">
-      <div className="p-3 bg-green-500/20 rounded-lg w-fit mb-4">
-        <Icon className="w-6 h-6 text-green-400" />
+    <div className="relative bg-gradient-to-br from-green-600/20 to-green-800/20 p-8 rounded-3xl border border-green-500/20 hover:border-green-400/30 transition-all duration-300">
+      <div className="absolute top-6 right-6">
+        <div className="p-3 bg-green-500/20 rounded-full backdrop-blur-sm">
+          <Icon className="w-6 h-6 text-green-400" />
+        </div>
       </div>
-      <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-      <p className="text-gray-400 mb-4">{description}</p>
-      <button className="text-green-400 hover:text-green-300 font-semibold">
-        {buttonText}
-      </button>
+      <div className="space-y-4">
+        <h3 className="text-2xl font-bold text-white mt-8">{title}</h3>
+        <p className="text-gray-400 min-h-[80px]">{description}</p>
+        <button className="inline-flex items-center px-6 py-3 rounded-lg bg-green-500/20 text-green-400 hover:bg-green-500/30 transition-colors">
+          {buttonText}
+          <ChevronRight className="w-4 h-4 ml-2" />
+        </button>
+      </div>
     </div>
   );
 }
@@ -83,4 +88,4 @@ export function TestimonialCard({ imageSrc, name, role, testimonial }: Testimoni
       <p className="text-gray-400">{testimonial}</p>
     </div>
   );
-} 
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { AppSidebar } from "@/components/layout/AppSidebar"
 import {
   Breadcrumb,
@@ -16,13 +16,32 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Trophy, Star, ArrowUpRight, Clock, Users, Target, Award, Flame } from 'lucide-react'
+import { Trophy, Star, ArrowUpRight, Clock, Users, Target, Award, Flame, Code } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useRouter } from 'next/navigation'
 
-const challenges = [
+// Extended challenge type with blockchain-related fields
+interface Challenge {
+  id: string;
+  name: string;
+  description: string;
+  difficulty: string;
+  xp: number;
+  participants: { image: string; fallback: string }[];
+  timeLeft: string;
+  completions: number;
+  creator: string; // blockchain address
+  score: number; // xp to be added
+  category: string;
+  reward?: string;
+}
+
+const challenges: Challenge[] = [
   {
-    name: "Smart Contract Security",
-    description: "Find and fix vulnerabilities in smart contracts",
+    id: "JfA.kN",
+    name: "Smart Contract Security Audit",
+    description: "Find and fix vulnerabilities in a DeFi protocol. This challenge requires deep knowledge of common smart contract vulnerabilities and security best practices. You'll analyze a protocol for reentrancy attacks, integer overflow/underflow, and other critical issues.",
     difficulty: "Advanced",
     xp: 500,
     participants: [
@@ -31,11 +50,16 @@ const challenges = [
       { image: "/avatars/03.png", fallback: "KN" },
     ],
     timeLeft: "2d",
-    completions: 45
+    completions: 45,
+    creator: "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+    score: 500,
+    category: "Security",
+    reward: "1000 USDC"
   },
   {
-    name: "DeFi Protocol Integration",
-    description: "Build a DeFi protocol integration from scratch",
+    id: "eVRk",
+    name: "Optimize Gas Usage",
+    description: "Optimize a smart contract for minimal gas consumption. You'll be given a functioning but inefficient smart contract and your task is to reduce its gas usage while maintaining all functionality. This involves refactoring storage patterns, optimizing loops, and implementing gas-efficient design patterns.",
     difficulty: "Intermediate",
     xp: 300,
     participants: [
@@ -43,36 +67,65 @@ const challenges = [
       { image: "/avatars/05.png", fallback: "RK" },
     ],
     timeLeft: "5d",
-    completions: 78
+    completions: 78,
+    creator: "0x3845badAde8e6dFF049820680d1F14bD3903a5d0",
+    score: 300,
+    category: "Optimization",
+    reward: "500 USDC"
   },
   {
-    name: "NFT Marketplace",
-    description: "Create a basic NFT marketplace contract",
-    difficulty: "Beginner",
-    xp: 200,
+    id: "MsTK",
+    name: "Build a Token Bridge",
+    description: "Create a cross-chain token bridge implementation. This challenge requires you to build a secure bridge that allows tokens to be transferred between different blockchain networks. You'll need to implement locking, minting, and verification mechanisms.",
+    difficulty: "Advanced",
+    xp: 800,
     participants: [
       { image: "/avatars/06.png", fallback: "ML" },
       { image: "/avatars/07.png", fallback: "SJ" },
       { image: "/avatars/08.png", fallback: "TK" },
     ],
     timeLeft: "7d",
-    completions: 124
+    completions: 32,
+    creator: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+    score: 800,
+    category: "Interoperability",
+    reward: "2000 USDC"
   },
   {
-    name: "Gas Optimization",
-    description: "Optimize smart contract for minimal gas usage",
-    difficulty: "Advanced",
-    xp: 450,
+    id: "RaW",
+    name: "NFT Staking System",
+    description: "Implement an NFT staking system with rewards. Design and build a system that allows users to stake their NFTs and earn rewards over time. You'll need to create the staking mechanism, reward distribution, and withdrawal functionality.",
+    difficulty: "Intermediate",
+    xp: 400,
     participants: [
       { image: "/avatars/09.png", fallback: "RJ" },
       { image: "/avatars/10.png", fallback: "AM" },
     ],
     timeLeft: "3d",
-    completions: 32
+    completions: 65,
+    creator: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+    score: 400,
+    category: "NFT",
+    reward: "750 USDC"
   }
 ]
 
 export default function ChallengesPage() {
+  const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const router = useRouter();
+
+  const handleChallengeClick = (challenge: Challenge) => {
+    setSelectedChallenge(challenge);
+    setIsDialogOpen(true);
+  };
+
+  const handleStartChallenge = () => {
+    // Close the dialog and redirect to the editor
+    setIsDialogOpen(false);
+    router.push('/playground/editor');
+  };
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -147,61 +200,65 @@ export default function ChallengesPage() {
           <div className="min-h-[calc(100vh-16rem)] rounded-xl glass-effect p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold text-white">Active Challenges</h2>
-              <button 
-                className="bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-2"
-              >
-                <Flame className="w-5 h-5" />
-                Start Challenge
-              </button>
             </div>
 
             <div className="space-y-4">
-              {challenges.map((challenge, index) => (
-                <div key={index} className="glass-effect p-4 rounded-lg">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Trophy className="w-5 h-5 text-green-400" />
-                      <div>
-                        <h3 className="text-white font-medium">{challenge.name}</h3>
-                        <p className="text-sm text-gray-400">{challenge.description}</p>
+              {challenges.map((challenge) => (
+                <div 
+                  key={challenge.id}
+                  className="glass-effect p-6 rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
+                  onClick={() => handleChallengeClick(challenge)}
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="text-lg font-semibold text-white">{challenge.name}</h3>
+                        <span className={`px-2 py-0.5 text-xs rounded-full ${
+                          challenge.difficulty === 'Advanced' ? 'bg-red-500/20 text-red-400' :
+                          challenge.difficulty === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
+                          'bg-green-500/20 text-green-400'
+                        }`}>
+                          {challenge.difficulty}
+                        </span>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-4 line-clamp-2">{challenge.description}</p>
+                      
+                      <div className="flex items-center gap-6 text-sm">
+                        <div className="flex items-center gap-1.5 text-gray-400">
+                          <Clock className="w-4 h-4" />
+                          <span>{challenge.timeLeft} remaining</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-gray-400">
+                          <Users className="w-4 h-4" />
+                          <span>{challenge.completions} completions</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-gray-400">
+                          <Star className="w-4 h-4" />
+                          <span>{challenge.xp} XP</span>
+                        </div>
+                        {challenge.reward && (
+                          <div className="flex items-center gap-1.5 text-gray-400">
+                            <Award className="w-4 h-4" />
+                            <span>{challenge.reward}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
-                    <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
-                      <ArrowUpRight className="w-5 h-5 text-gray-400" />
-                    </button>
+                    <div className="p-2 bg-green-500/20 rounded-full">
+                      <ArrowUpRight className="w-5 h-5 text-green-400" />
+                    </div>
                   </div>
-                  <div className="flex items-center gap-4 mt-4">
+                  
+                  <div className="mt-4 flex items-center">
                     <div className="flex -space-x-2">
-                      {challenge.participants.map((participant, i) => (
-                        <Avatar key={i} className="w-6 h-6 border-2 border-background">
-                          <AvatarImage src={participant.image} />
+                      {challenge.participants.map((participant, index) => (
+                        <Avatar key={index} className="border-2 border-black w-8 h-8">
+                          <AvatarImage src={participant.image} alt="Participant" />
                           <AvatarFallback>{participant.fallback}</AvatarFallback>
                         </Avatar>
                       ))}
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        {challenge.timeLeft} remaining
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Users className="w-4 h-4" />
-                        {challenge.completions} completions
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Star className="w-4 h-4" />
-                        {challenge.xp} XP
-                      </span>
-                      <span className={`px-2 py-1 text-xs rounded-full ${
-                        challenge.difficulty === 'Advanced' 
-                          ? 'bg-red-500/10 text-red-400'
-                          : challenge.difficulty === 'Intermediate'
-                          ? 'bg-yellow-500/10 text-yellow-400'
-                          : 'bg-green-500/10 text-green-400'
-                      }`}>
-                        {challenge.difficulty}
-                      </span>
-                    </div>
+                    <span className="text-gray-400 text-xs ml-2">+{challenge.participants.length} participants</span>
                   </div>
                 </div>
               ))}
@@ -209,6 +266,79 @@ export default function ChallengesPage() {
           </div>
         </div>
       </SidebarInset>
+
+      {/* Challenge Details Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-[600px] bg-black border border-green-500/20 text-white">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold flex items-center gap-2">
+              {selectedChallenge?.name}
+              <span className={`px-2 py-0.5 text-xs rounded-full ${
+                selectedChallenge?.difficulty === 'Advanced' ? 'bg-red-500/20 text-red-400' :
+                selectedChallenge?.difficulty === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
+                'bg-green-500/20 text-green-400'
+              }`}>
+                {selectedChallenge?.difficulty}
+              </span>
+            </DialogTitle>
+            <DialogDescription className="text-gray-400">
+              {selectedChallenge?.description}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="grid grid-cols-2 gap-4 my-4">
+            <div className="glass-effect p-4 rounded-xl">
+              <div className="flex items-center gap-2 mb-2">
+                <Trophy className="w-4 h-4 text-green-400" />
+                <span className="text-sm text-gray-400">XP Reward</span>
+              </div>
+              <p className="text-xl font-semibold text-white">{selectedChallenge?.score} XP</p>
+            </div>
+            
+            <div className="glass-effect p-4 rounded-xl">
+              <div className="flex items-center gap-2 mb-2">
+                <Award className="w-4 h-4 text-green-400" />
+                <span className="text-sm text-gray-400">Token Reward</span>
+              </div>
+              <p className="text-xl font-semibold text-white">{selectedChallenge?.reward}</p>
+            </div>
+            
+            <div className="glass-effect p-4 rounded-xl">
+              <div className="flex items-center gap-2 mb-2">
+                <Clock className="w-4 h-4 text-green-400" />
+                <span className="text-sm text-gray-400">Time Remaining</span>
+              </div>
+              <p className="text-xl font-semibold text-white">{selectedChallenge?.timeLeft}</p>
+            </div>
+            
+            <div className="glass-effect p-4 rounded-xl">
+              <div className="flex items-center gap-2 mb-2">
+                <Target className="w-4 h-4 text-green-400" />
+                <span className="text-sm text-gray-400">Category</span>
+              </div>
+              <p className="text-xl font-semibold text-white">{selectedChallenge?.category}</p>
+            </div>
+          </div>
+          
+          <div className="glass-effect p-4 rounded-xl my-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Users className="w-4 h-4 text-green-400" />
+              <span className="text-sm text-gray-400">Creator</span>
+            </div>
+            <p className="text-sm font-mono text-white truncate">{selectedChallenge?.creator}</p>
+          </div>
+          
+          <div className="mt-6 flex justify-center">
+            <button 
+              onClick={handleStartChallenge}
+              className="inline-flex items-center px-8 py-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 hover:scale-105"
+            >
+              <Code className="w-5 h-5 mr-2" />
+              Start Challenge
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </SidebarProvider>
-  )
-} 
+  );
+}

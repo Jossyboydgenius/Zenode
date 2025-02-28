@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { User, Mail, Link as LinkIcon, Upload, ChevronDown } from 'lucide-react';
+import { User, Mail, Link as LinkIcon, Upload, ChevronDown, MapPin, Twitter, GitBranch, GitCommit } from 'lucide-react';
 import {
    DropdownMenu,
    DropdownMenuContent,
@@ -44,10 +44,10 @@ export default function Profile() {
 
          <div className="space-y-8">
             {/* Avatar Upload Section */}
-            <div className="glass-effect p-6 rounded-xl">
+            <div className="glass-effect p-6 rounded-xl max-w-sm ml-0">
                <h2 className="text-xl font-semibold text-white mb-4">Profile Picture</h2>
                <div className="flex items-center gap-6">
-                  <div className="relative w-24 h-24">
+                  <div className="relative w-32 h-32">
                      {user?.avatar_url ? (
                         <img
                            src={user?.avatar_url as string}
@@ -59,7 +59,7 @@ export default function Profile() {
                            <User className="w-8 h-8 text-green-400" />
                         </div>
                      )}
-                     <label className="absolute bottom-0 right-0 p-1 bg-green-500/20 rounded-full cursor-pointer hover:bg-green-500/30 transition-colors">
+                     {/* <label className="absolute bottom-0 right-0 p-1 bg-green-500/20 rounded-full cursor-pointer hover:bg-green-500/30 transition-colors">
                         <Upload className="w-4 h-4 text-green-400" />
                         <input
                            type="file"
@@ -67,10 +67,10 @@ export default function Profile() {
                            accept="image/*"
                            onChange={handleImageUpload}
                         />
-                     </label>
+                     </label> */}
                   </div>
                   <div className="text-sm text-gray-400">
-                     Recommended: Square image, at least 400x400px
+                     GitHub Profile Image
                   </div>
                </div>
             </div>
@@ -88,7 +88,6 @@ export default function Profile() {
                            className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
                            disabled
                            value={user?.name as string}
-
                         />
                      </div>
                      <p className="text-sm text-gray-400 mt-1">
@@ -98,14 +97,13 @@ export default function Profile() {
                   <label className="block">
                      <span className="text-white">Username</span>
                      <div className="mt-1 relative">
-                        {/* <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" /> */}
+                        <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                         <input
                            type="text"
                            placeholder="Your username"
                            className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
                            disabled
                            value={user?.login as string}
-
                         />
                      </div>
                      <p className="text-sm text-gray-400 mt-1">
@@ -113,78 +111,160 @@ export default function Profile() {
                      </p>
                   </label>
 
-                  <label className="block">
-                     <span className="text-white">Email</span>
-                     <div className="mt-1 relative">
-                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                           type="email"
-                           placeholder="Select a verified email to display"
-                           className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
-                           disabled
-                           value={user?.email as string}
-                        />
-                     </div>
-                     <p className="text-sm text-gray-400 mt-1">
-                        You can manage verified email addresses in your email settings.
-                     </p>
-                  </label>
+                  {user?.email && (
+                     <label className="block">
+                        <span className="text-white">Email</span>
+                        <div className="mt-1 relative">
+                           <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                           <input
+                              type="email"
+                              placeholder="Select a verified email to display"
+                              className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                              disabled
+                              value={user?.email as string}
+                           />
+                        </div>
+                        {/* <p className="text-sm text-gray-400 mt-1">
+                           You can manage verified email addresses in your email settings.
+                        </p> */}
+                     </label>
+                  )}
 
                   <label className="block">
                      <span className="text-white">Bio</span>
                      <textarea
                         placeholder="Tell us about yourself"
                         className="mt-1 w-full bg-black/40 border border-gray-800 rounded-lg py-2 px-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500 min-h-[100px]"
+                        disabled
+                        value={user?.bio as string}
                      />
                      <p className="text-sm text-gray-400 mt-1">
                         You can @mention other users and organizations to link to them.
                      </p>
                   </label>
 
-                  <label className="block">
-                     <span className="text-white">URLs</span>
-                     <div className="mt-1 space-y-2">
-                        <div className="relative">
-                           <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  {user?.location && (
+                     <label className="block">
+                        <span className="text-white">Location</span>
+                        <div className="mt-1 relative">
+                           <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                            <input
-                              type="url"
-                              placeholder="Add a URL to your website, blog, or social media profiles"
+                              type="text"
+                              placeholder="Your location"
                               className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                              disabled
+                              value={user?.location || ''}
                            />
                         </div>
-                     </div>
-                  </label>
+                     </label>
+                  )}
 
-                  {/* Years of Experience Dropdown
-                  <label className="block">
-                     <span className="text-white">Years of Experience</span>
-                     <DropdownMenu>
-                        <DropdownMenuTrigger className="mt-1 w-full bg-black/40 border border-gray-800 rounded-lg py-2 px-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500 flex justify-between items-center">
-                           {experience}
-                           <ChevronDown className="h-4 w-4 text-gray-400" />
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-[--radix-dropdown-menu-trigger-width] bg-black/90 border border-gray-800">
-                           {experienceOptions.map((option) => (
-                              <DropdownMenuItem
-                                 key={option}
-                                 onClick={() => setExperience(option)}
-                                 className="text-gray-200 hover:text-white hover:bg-green-500/20"
-                              >
-                                 {option}
-                              </DropdownMenuItem>
-                           ))}
-                        </DropdownMenuContent>
-                     </DropdownMenu>
-                  </label> */}
+                  {user?.blog && (
+                     <label className="block">
+                        <span className="text-white">Website</span>
+                        <div className="mt-1 relative">
+                           <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                           <a
+                              href={user?.blog}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500 block"
+                           >
+                              {user?.blog}
+                           </a>
+                        </div>
+                     </label>
+                  )}
+
+                  {user?.twitter_username && (
+                     <label className="block">
+                        <span className="text-white">Twitter</span>
+                        <div className="mt-1 relative">
+                           <Twitter className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                           <a
+                              href={`https://x.com/${user?.twitter_username}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500 block"
+                           >
+                              {user?.twitter_username}
+                           </a>
+                        </div>
+                     </label>
+                  )}
+
+                  {user?.public_gists !== null && (
+                     <label className="block">
+                        <span className="text-white">Public Gists</span>
+                        <div className="mt-1 relative">
+                           <GitBranch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                           <input
+                              type="number"
+                              placeholder="Number of public gists"
+                              className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                              disabled
+                              value={user?.public_gists as number}
+                           />
+                        </div>
+                     </label>
+                  )}
+
+                  {user?.public_repos !== null && (
+                     <label className="block">
+                        <span className="text-white">Public Repos</span>
+                        <div className="mt-1 relative">
+                           <GitCommit className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                           <input
+                              type="number"
+                              placeholder="Number of public repositories"
+                              className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                              disabled
+                              value={user?.public_repos as number}
+                           />
+                        </div>
+                     </label>
+                  )}
+
+                  {user?.followers !== null && (
+                     <label className="block">
+                        <span className="text-white">Followers</span>
+                        <div className="mt-1 relative">
+                           <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                           <input
+                              type="number"
+                              placeholder="Number of followers"
+                              className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                              disabled
+                              value={user?.followers as number}
+                           />
+                        </div>
+                     </label>
+                  )}
+
+                  {user?.following !== null && (
+                     <label className="block">
+                        <span className="text-white">Following</span>
+                        <div className="mt-1 relative">
+                           <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                           <input
+                              type="number"
+                              placeholder="Number of following"
+                              className="w-full bg-black/40 border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                              disabled
+                              value={user?.following as number}
+                           />
+                        </div>
+                     </label>
+                  )}
                </div>
 
                <div className="flex justify-end">
-                  <button className="bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+                  {/* <button className="bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
                      Save Changes
-                  </button>
+                  </button> */}
                </div>
             </div>
          </div>
       </div>
    );
-} 
+}

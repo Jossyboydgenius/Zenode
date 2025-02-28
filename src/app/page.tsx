@@ -2,6 +2,7 @@
 
 import { Trophy, GitPullRequest, Bug, Users, Sparkles, ChevronRight, Stars, Rocket, Diamond } from 'lucide-react';
 import { StatCard, FeatureCard, WhyJoinCard, TestimonialCard } from '@/components/ui/cards';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -32,10 +33,12 @@ export default function Home() {
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto glass-effect p-6 rounded-xl">
               Join Web3's gamified developer platform. Turn your coding contributions into rewards and land your dream job.
             </p>
-            <button className="magical-border text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center mx-auto">
-              Submit a PR
-              <ChevronRight className="w-5 h-5 ml-2" />
-            </button>
+            <Link href="/dashboard/submit-proposal">
+              <button className="magical-border text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center mx-auto">
+                Submit a Proposal
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -181,7 +184,7 @@ export default function Home() {
               buttonText="Land a Job"
             />
             <WhyJoinCard
-              icon={Trophy}
+              icon={Stars}
               title="Enhance Your Skillset And Boost Your Salary"
               description="Become a blockchain developer with Zenode for free. Master Solidity and Rust development."
               buttonText="Upskill Now"
@@ -238,4 +241,4 @@ export default function Home() {
       </div>
     </>
   );
-} 
+}

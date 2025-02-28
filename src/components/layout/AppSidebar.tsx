@@ -58,6 +58,10 @@ const data = {
                title: "Analytics",
                url: "/dashboard/analytics",
             },
+            {
+               title: "Submit Proposal",
+               url: "/dashboard/submit-proposal",
+            },
          ],
       },
       {
@@ -234,7 +238,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
    useEffect(() => {
       const fetchUser = async () => {
-         await dispatch(setUserAsync("nyuiela"));
+         await dispatch(setUserAsync("jossyboydgenius"));
          console.log(user);
          await dispatch(setRepoAsync({ username: "nyuiela", userId: "61779836" }));
          console.log(repo);
@@ -248,7 +252,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenu>
                <SidebarMenuItem>
                   <SidebarMenuButton size="lg" asChild>
-                     <a href="#">
+                     <a href="/">
                         <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-green-500/20">
                            <Award className="size-4 text-green-400" />
                         </div>
