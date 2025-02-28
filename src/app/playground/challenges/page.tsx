@@ -16,10 +16,10 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Trophy, Star, ArrowUpRight, Clock, Users, Target, Award, Flame, Code } from 'lucide-react'
+import { Trophy, Star, ArrowUpRight, Clock, Users, Target, Award } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useRouter } from 'next/navigation'
+import { ChallengeDialog } from '@/components/challenges/ChallengeDialog'
 
 // Extended challenge type with blockchain-related fields
 interface Challenge {
@@ -37,6 +37,7 @@ interface Challenge {
   reward?: string;
 }
 
+// Challenge data remains the same
 const challenges: Challenge[] = [
   {
     id: "JfA.kN",
@@ -267,78 +268,13 @@ export default function ChallengesPage() {
         </div>
       </SidebarInset>
 
-      {/* Challenge Details Dialog */}
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[600px] bg-black border border-green-500/20 text-white">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold flex items-center gap-2">
-              {selectedChallenge?.name}
-              <span className={`px-2 py-0.5 text-xs rounded-full ${
-                selectedChallenge?.difficulty === 'Advanced' ? 'bg-red-500/20 text-red-400' :
-                selectedChallenge?.difficulty === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
-                'bg-green-500/20 text-green-400'
-              }`}>
-                {selectedChallenge?.difficulty}
-              </span>
-            </DialogTitle>
-            <DialogDescription className="text-gray-400">
-              {selectedChallenge?.description}
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="grid grid-cols-2 gap-4 my-4">
-            <div className="glass-effect p-4 rounded-xl">
-              <div className="flex items-center gap-2 mb-2">
-                <Trophy className="w-4 h-4 text-green-400" />
-                <span className="text-sm text-gray-400">XP Reward</span>
-              </div>
-              <p className="text-xl font-semibold text-white">{selectedChallenge?.score} XP</p>
-            </div>
-            
-            <div className="glass-effect p-4 rounded-xl">
-              <div className="flex items-center gap-2 mb-2">
-                <Award className="w-4 h-4 text-green-400" />
-                <span className="text-sm text-gray-400">Token Reward</span>
-              </div>
-              <p className="text-xl font-semibold text-white">{selectedChallenge?.reward}</p>
-            </div>
-            
-            <div className="glass-effect p-4 rounded-xl">
-              <div className="flex items-center gap-2 mb-2">
-                <Clock className="w-4 h-4 text-green-400" />
-                <span className="text-sm text-gray-400">Time Remaining</span>
-              </div>
-              <p className="text-xl font-semibold text-white">{selectedChallenge?.timeLeft}</p>
-            </div>
-            
-            <div className="glass-effect p-4 rounded-xl">
-              <div className="flex items-center gap-2 mb-2">
-                <Target className="w-4 h-4 text-green-400" />
-                <span className="text-sm text-gray-400">Category</span>
-              </div>
-              <p className="text-xl font-semibold text-white">{selectedChallenge?.category}</p>
-            </div>
-          </div>
-          
-          <div className="glass-effect p-4 rounded-xl my-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Users className="w-4 h-4 text-green-400" />
-              <span className="text-sm text-gray-400">Creator</span>
-            </div>
-            <p className="text-sm font-mono text-white truncate">{selectedChallenge?.creator}</p>
-          </div>
-          
-          <div className="mt-6 flex justify-center">
-            <button 
-              onClick={handleStartChallenge}
-              className="inline-flex items-center px-8 py-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 hover:scale-105"
-            >
-              <Code className="w-5 h-5 mr-2" />
-              Start Challenge
-            </button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Use the extracted ChallengeDialog component */}
+      <ChallengeDialog 
+        challenge={selectedChallenge}
+        isOpen={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        onStartChallenge={handleStartChallenge}
+      />
     </SidebarProvider>
   );
 }
