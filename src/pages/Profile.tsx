@@ -44,10 +44,10 @@ export default function Profile() {
 
          <div className="space-y-8">
             {/* Avatar Upload Section */}
-            <div className="glass-effect p-6 rounded-xl">
+            <div className="glass-effect p-6 rounded-xl max-w-sm ml-0">
                <h2 className="text-xl font-semibold text-white mb-4">Profile Picture</h2>
                <div className="flex items-center gap-6">
-                  <div className="relative w-24 h-24">
+                  <div className="relative w-32 h-32">
                      {user?.avatar_url ? (
                         <img
                            src={user?.avatar_url as string}
@@ -59,7 +59,7 @@ export default function Profile() {
                            <User className="w-8 h-8 text-green-400" />
                         </div>
                      )}
-                     <label className="absolute bottom-0 right-0 p-1 bg-green-500/20 rounded-full cursor-pointer hover:bg-green-500/30 transition-colors">
+                     {/* <label className="absolute bottom-0 right-0 p-1 bg-green-500/20 rounded-full cursor-pointer hover:bg-green-500/30 transition-colors">
                         <Upload className="w-4 h-4 text-green-400" />
                         <input
                            type="file"
@@ -67,10 +67,10 @@ export default function Profile() {
                            accept="image/*"
                            onChange={handleImageUpload}
                         />
-                     </label>
+                     </label> */}
                   </div>
                   <div className="text-sm text-gray-400">
-                     Recommended: Square image, at least 400x400px
+                     GitHub Profile Image
                   </div>
                </div>
             </div>
@@ -98,7 +98,7 @@ export default function Profile() {
                   <label className="block">
                      <span className="text-white">Username</span>
                      <div className="mt-1 relative">
-                        {/* <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" /> */}
+                        <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                         <input
                            type="text"
                            placeholder="Your username"
@@ -179,12 +179,12 @@ export default function Profile() {
                </div>
 
                <div className="flex justify-end">
-                  <button className="bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+                  {/* <button className="bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
                      Save Changes
-                  </button>
+                  </button> */}
                </div>
             </div>
          </div>
       </div>
    );
-} 
+}
