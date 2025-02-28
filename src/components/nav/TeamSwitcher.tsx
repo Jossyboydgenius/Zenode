@@ -8,13 +8,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from '../../ui/dropdown-menu';
+} from '../ui/dropdown-menu';
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '../../ui/sidebar';
+} from '../ui/sidebar';
 
 interface TeamSwitcherProps {
   teams: {
@@ -25,7 +25,8 @@ interface TeamSwitcherProps {
 }
 
 export function TeamSwitcher({ teams }: TeamSwitcherProps) {
-  const { isCollapsed } = useSidebar();
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
   const [activeTeam, setActiveTeam] = useState(teams[0]);
 
   return (
@@ -81,4 +82,4 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
       </SidebarMenuItem>
     </SidebarMenu>
   );
-} 
+}
