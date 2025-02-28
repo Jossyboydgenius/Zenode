@@ -3,9 +3,18 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Award, Code } from 'lucide-react';
+import { ConnectButton, useAccount } from '@particle-network/connectkit';
+import { useEffect } from 'react';
 
 export function Navbar() {
    const router = useRouter();
+   const account = useAccount();
+
+   useEffect(() => {
+      if (account.isConnected) {
+         router.push("/dashboard");
+      }
+   }, [account.isConnected, router]);
 
    return (
       <div className="fixed top-0 left-0 right-0 z-50">
@@ -31,11 +40,12 @@ export function Navbar() {
                </div>
                <div className="flex items-center space-x-4">
                   {/* Connect button is handled by ParticleConnectkit */}
-                  <button 
+                  {/* <button
                      className="bg-gradient-to-r from-green-400 to-cyan-400 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
                   >
                      Connect
-                  </button>
+                  </button> */}
+                  <ConnectButton />
                </div>
             </div>
          </nav>

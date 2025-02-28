@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ParticleConnectkit } from '@/context/connect'
 import { ClientLayout } from '@/components/layout/ClientLayout'
+import ReduxProvider from '@/context/redux/provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,11 +24,13 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body className={inter.className}>
-            <ParticleConnectkit>
-               <ClientLayout>
-                  {children}
-               </ClientLayout>
-            </ParticleConnectkit>
+            <ReduxProvider>
+               <ParticleConnectkit>
+                  <ClientLayout>
+                     {children}
+                  </ClientLayout>
+               </ParticleConnectkit>
+            </ReduxProvider>
          </body>
       </html>
    )
