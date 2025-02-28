@@ -33,7 +33,7 @@ export default function Home() {
               Join Web3's gamified developer platform. Turn your coding contributions into rewards and land your dream job.
             </p>
             <button className="magical-border text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center mx-auto">
-              Submit a PR
+              Submit a Proposal
               <ChevronRight className="w-5 h-5 ml-2" />
             </button>
           </div>
