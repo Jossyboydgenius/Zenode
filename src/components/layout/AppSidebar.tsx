@@ -31,6 +31,7 @@ import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setUserAsync } from "@/context/redux/userSlice"
 import { AppDispatch, RootState } from "@/context/redux/store"
+import { setRepoAsync } from "@/context/redux/repoSlice"
 
 const data = {
    user: {
@@ -228,12 +229,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
    //    fetchUser();
    // }, []);
    const user = useSelector((state: RootState) => state.user.user);
+   const repo = useSelector((state: RootState) => state.repo.name);
    const dispatch = useDispatch<AppDispatch>();
 
    useEffect(() => {
       const fetchUser = async () => {
          await dispatch(setUserAsync("nyuiela"));
          console.log(user);
+         await dispatch(setRepoAsync({ username: "nyuiela", userId: "61779836" }));
+         console.log(repo);
       }
       fetchUser();
    }, []);

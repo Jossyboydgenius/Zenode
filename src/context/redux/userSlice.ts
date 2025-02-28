@@ -90,7 +90,6 @@ const setUserAsync = createAsyncThunk(
       const response = await fetch(`https://api.github.com/users/${username}`);
       const gitdata = await response.json();
       let user = gitdata as IUser;
-      console.log(user);
       const result = await fetch(`/api/git?username=${username}`, {
          method: 'GET'
       })
