@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { app } from "@/backend/octokit";
+export const dynamic = 'force-dynamic'
+export const revalidate = 3600 // revalidate every hour
+
 const GET = async (req: NextRequest, res: NextResponse) => {
 
    const { searchParams } = new URL(req.url);
@@ -31,4 +34,4 @@ const GET = async (req: NextRequest, res: NextResponse) => {
    return NextResponse.json(result);
 }
 
-export { GET };
+export { GET }
