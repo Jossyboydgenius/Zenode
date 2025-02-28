@@ -16,7 +16,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Activity, Users, GitPullRequest, Trophy, GitCommit, GitPullRequestDraft, MessageSquare, Star, Code, PieChart, LineChart } from 'lucide-react';
+import { Activity, Users, GitPullRequest, Trophy, GitCommit, GitPullRequestDraft, MessageSquare, Star, Code, PieChart, LineChart, FileText } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CodeEditor } from "@/components/CodeEditor";
 
@@ -41,6 +41,13 @@ const dashboardCards = [
     icon: LineChart,
     url: "/dashboard/analytics",
     stats: "Real-time Data"
+  },
+  {
+    title: "Submit Proposal",
+    description: "Create and submit new project proposals",
+    icon: FileText,
+    url: "/dashboard/submit-proposal",
+    stats: "New Opportunity"
   }
 ]
 
