@@ -153,6 +153,10 @@
     top: 85%;
     z-index: 0;
   }
+
+  .animate-spin-slow {
+    animation: spin-slow 2s linear infinite;
+  }
 }
 
 @keyframes float {
@@ -189,6 +193,11 @@
   }
 }
 
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -207,4 +216,4 @@
   body {
     @apply bg-background text-foreground;
   }
-} 
+}
