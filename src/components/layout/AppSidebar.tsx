@@ -232,7 +232,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
    useEffect(() => {
       const fetchUser = async () => {
-         await dispatch(setUserAsync("nyuiela"));
+         await dispatch(setUserAsync("jossyboydgenius"));
          console.log(user);
       }
       fetchUser();
