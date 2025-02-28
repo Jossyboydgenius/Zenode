@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { ChevronRight, type LucideIcon } from "lucide-react"
 
 import {
@@ -19,19 +20,25 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
-export function NavMain({
-  items,
-}: {
-  items: {
+interface NavItem {
+  title: string
+  url: string
+  icon?: LucideIcon
+  isActive?: boolean
+  items?: {
     title: string
     url: string
-    icon: LucideIcon
-    isActive?: boolean
     items?: {
       title: string
       url: string
     }[]
   }[]
+}
+
+export function NavMain({
+  items,
+}: {
+  items: NavItem[]
 }) {
   return (
     <SidebarGroup>
@@ -42,7 +49,7 @@ export function NavMain({
             <SidebarMenuItem>
               <SidebarMenuButton asChild tooltip={item.title}>
                 <a href={item.url}>
-                  <item.icon />
+                  {item.icon && <item.icon />}
                   <span>{item.title}</span>
                 </a>
               </SidebarMenuButton>
@@ -58,11 +65,35 @@ export function NavMain({
                     <SidebarMenuSub>
                       {item.items?.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
-                            <a href={subItem.url}>
-                              <span>{subItem.title}</span>
-                            </a>
-                          </SidebarMenuSubButton>
+                          {subItem.items ? (
+                            <Collapsible>
+                              <CollapsibleTrigger asChild>
+                                <SidebarMenuSubButton className="flex items-center justify-between">
+                                  <span>{subItem.title}</span>
+                                  <ChevronRight className="h-4 w-4" />
+                                </SidebarMenuSubButton>
+                              </CollapsibleTrigger>
+                              <CollapsibleContent>
+                                <div className="pl-4 pt-2">
+                                  {subItem.items.map((nestedItem) => (
+                                    <SidebarMenuSubItem key={nestedItem.title}>
+                                      <SidebarMenuSubButton asChild>
+                                        <a href={nestedItem.url}>
+                                          <span>{nestedItem.title}</span>
+                                        </a>
+                                      </SidebarMenuSubButton>
+                                    </SidebarMenuSubItem>
+                                  ))}
+                                </div>
+                              </CollapsibleContent>
+                            </Collapsible>
+                          ) : (
+                            <SidebarMenuSubButton asChild>
+                              <a href={subItem.url}>
+                                <span>{subItem.title}</span>
+                              </a>
+                            </SidebarMenuSubButton>
+                          )}
                         </SidebarMenuSubItem>
                       ))}
                     </SidebarMenuSub>

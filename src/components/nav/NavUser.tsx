@@ -84,22 +84,22 @@ export function NavUser({
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                     <DropdownMenuItem onClick={() => window.location.href = '/dashboard/profile'}>
+                     <DropdownMenuItem onClick={() => window.location.href = '/settings/profile'}>
                         <User />
                         Profile
                      </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                     <DropdownMenuItem onClick={() => window.location.href = '/dashboard/account'}>
+                     <DropdownMenuItem onClick={() => window.location.href = '/settings/account'}>
                         <BadgeCheck />
                         Account
                      </DropdownMenuItem>
-                     <DropdownMenuItem onClick={() => window.location.href = '/dashboard/security'}>
+                     <DropdownMenuItem onClick={() => window.location.href = '/settings/security'}>
                         <Shield />
                         Security
                      </DropdownMenuItem>
-                     <DropdownMenuItem onClick={() => window.location.href = '/dashboard/notifications'}>
+                     <DropdownMenuItem onClick={() => window.location.href = '/settings/notifications'}>
                         <Bell />
                         Notifications
                      </DropdownMenuItem>

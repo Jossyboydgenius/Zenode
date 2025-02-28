@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import React from 'react'
 import { AppSidebar } from "@/components/layout/AppSidebar"
@@ -14,40 +14,40 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Code, GitPullRequest, Network, Trophy } from 'lucide-react'
+import { LifeBuoy, MessageSquare, Mail, Video, FileQuestion } from 'lucide-react'
 
-const playgroundCards = [
+const supportCards = [
   {
-    title: "Code Editor",
-    description: "Write and test smart contracts in real-time",
-    icon: Code,
-    url: "/playground/editor",
-    stats: "Live Code Environment"
+    title: "Live Chat",
+    description: "Get instant help from our support team",
+    icon: MessageSquare,
+    url: "#",
+    stats: "Avg. Response Time: 5 mins"
   },
   {
-    title: "Smart Contracts",
-    description: "Deploy and test smart contracts",
-    icon: GitPullRequest,
-    url: "/playground/smart-contracts",
-    stats: "24 Contract Templates"
+    title: "Email Support",
+    description: "Send us a detailed message about your issue",
+    icon: Mail,
+    url: "#",
+    stats: "Response within 24 hours"
   },
   {
-    title: "Web3 Integration",
-    description: "Test Web3 integrations and APIs",
-    icon: Network,
-    url: "/playground/web3",
-    stats: "18 Integration Tools"
+    title: "Video Tutorials",
+    description: "Watch guided tutorials for common issues",
+    icon: Video,
+    url: "#",
+    stats: "50+ Tutorial Videos"
   },
   {
-    title: "Challenges",
-    description: "Complete coding challenges to earn rewards",
-    icon: Trophy,
-    url: "/playground/challenges",
-    stats: "12 Active Challenges"
+    title: "FAQs",
+    description: "Browse our frequently asked questions",
+    icon: FileQuestion,
+    url: "#",
+    stats: "200+ Questions Answered"
   }
 ]
 
-export default function PlaygroundPage() {
+export default function SupportPage() {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -59,7 +59,7 @@ export default function PlaygroundPage() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Playground</BreadcrumbPage>
+                  <BreadcrumbPage>Support</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -67,7 +67,7 @@ export default function PlaygroundPage() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {playgroundCards.map((card) => (
+            {supportCards.map((card) => (
               <a 
                 key={card.title}
                 href={card.url}

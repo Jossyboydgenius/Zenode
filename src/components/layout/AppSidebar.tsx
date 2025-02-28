@@ -11,6 +11,7 @@ import {
    Code,
    Wallet,
    Image,
+   ArrowLeftRight,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav/NavMain"
@@ -32,7 +33,6 @@ import { setUserAsync } from "@/context/redux/userSlice"
 import { AppDispatch, RootState } from "@/context/redux/store"
 
 const data = {
-
    user: {
       name: "johndoe",
       email: "john@zenode.dev",
@@ -47,7 +47,7 @@ const data = {
          items: [
             {
                title: "Overview",
-               url: "/dashboard",
+               url: "/dashboard/overview",
             },
             {
                title: "Projects",
@@ -77,14 +77,8 @@ const data = {
                url: "/projects/nft",
             },
             {
-               title: "More",
-               url: "#",
-               items: [
-                  {
-                     title: "Token Bridge",
-                     url: "/projects/token-bridge",
-                  }
-               ]
+               title: "Token Bridge",
+               url: "/projects/token-bridge",
             }
          ],
       },
@@ -151,7 +145,7 @@ const data = {
       },
       {
          title: "Settings",
-         url: "/settings/profile",
+         url: "/settings",
          icon: Settings2,
          items: [
             {
@@ -166,6 +160,10 @@ const data = {
                title: "Notifications",
                url: "/settings/notifications",
             },
+            {
+               title: "Security",
+               url: "/settings/security",
+            }
          ],
       },
    ],
@@ -197,6 +195,11 @@ const data = {
          url: "/projects/nft",
          icon: Image,
       },
+      {
+         name: "Token Bridge",
+         url: "/projects/token-bridge",
+         icon: ArrowLeftRight,
+      }
    ],
 }
 

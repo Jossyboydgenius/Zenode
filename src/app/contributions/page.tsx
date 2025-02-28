@@ -30,6 +30,30 @@ import {
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+const contributionCards = [
+  {
+    title: "My PRs",
+    description: "View and manage your pull requests",
+    icon: GitPullRequest,
+    url: "/contributions/my-prs",
+    stats: "48 Total PRs"
+  },
+  {
+    title: "Issues",
+    description: "Track and resolve project issues",
+    icon: Bug,
+    url: "/contributions/issues",
+    stats: "24 Active Issues"
+  },
+  {
+    title: "Rewards",
+    description: "View your earned rewards and achievements",
+    icon: Trophy,
+    url: "/contributions/rewards",
+    stats: "4,850 XP Earned"
+  }
+]
+
 export default function ContributionsPage() {
   return (
     <SidebarProvider>
@@ -53,52 +77,25 @@ export default function ContributionsPage() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          {/* Contribution Stats */}
-          <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-            <div className="glass-effect p-6 rounded-xl">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-500/20 rounded-lg">
-                  <GitPullRequest className="w-6 h-6 text-green-400" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {contributionCards.map((card) => (
+              <a 
+                key={card.title}
+                href={card.url}
+                className="glass-effect p-6 rounded-xl hover:bg-white/5 transition-colors"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-2 bg-green-500/20 rounded-lg">
+                    <card.icon className="w-6 h-6 text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">{card.title}</h3>
+                    <p className="text-sm text-gray-400">{card.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-400">Total PRs</p>
-                  <h3 className="text-2xl font-bold text-white">48</h3>
-                </div>
-              </div>
-            </div>
-            <div className="glass-effect p-6 rounded-xl">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-500/20 rounded-lg">
-                  <CheckCircle2 className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Merged PRs</p>
-                  <h3 className="text-2xl font-bold text-white">32</h3>
-                </div>
-              </div>
-            </div>
-            <div className="glass-effect p-6 rounded-xl">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-500/20 rounded-lg">
-                  <Bug className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Issues Fixed</p>
-                  <h3 className="text-2xl font-bold text-white">156</h3>
-                </div>
-              </div>
-            </div>
-            <div className="glass-effect p-6 rounded-xl">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-500/20 rounded-lg">
-                  <Trophy className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Contribution Score</p>
-                  <h3 className="text-2xl font-bold text-white">4,850</h3>
-                </div>
-              </div>
-            </div>
+                <div className="text-sm text-gray-500">{card.stats}</div>
+              </a>
+            ))}
           </div>
           
           {/* Main Content */}

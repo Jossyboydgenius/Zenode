@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import React from 'react'
 import { AppSidebar } from "@/components/layout/AppSidebar"
@@ -14,40 +14,40 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Code, GitPullRequest, Network, Trophy } from 'lucide-react'
+import { Code, Wallet, Image, ArrowLeftRight } from 'lucide-react'
 
-const playgroundCards = [
-  {
-    title: "Code Editor",
-    description: "Write and test smart contracts in real-time",
-    icon: Code,
-    url: "/playground/editor",
-    stats: "Live Code Environment"
-  },
+const projectCards = [
   {
     title: "Smart Contracts",
-    description: "Deploy and test smart contracts",
-    icon: GitPullRequest,
-    url: "/playground/smart-contracts",
-    stats: "24 Contract Templates"
+    description: "Build and deploy secure smart contracts",
+    icon: Code,
+    url: "/projects/smart-contracts",
+    stats: "12 Active Contracts"
   },
   {
-    title: "Web3 Integration",
-    description: "Test Web3 integrations and APIs",
-    icon: Network,
-    url: "/playground/web3",
-    stats: "18 Integration Tools"
+    title: "DeFi Integration",
+    description: "Integrate DeFi protocols and services",
+    icon: Wallet,
+    url: "/projects/defi",
+    stats: "3 Active Protocols"
   },
   {
-    title: "Challenges",
-    description: "Complete coding challenges to earn rewards",
-    icon: Trophy,
-    url: "/playground/challenges",
-    stats: "12 Active Challenges"
+    title: "NFT Marketplace",
+    description: "Create and manage NFT collections",
+    icon: Image,
+    url: "/projects/nft",
+    stats: "158 Collections"
+  },
+  {
+    title: "Token Bridge",
+    description: "Cross-chain token bridge implementation",
+    icon: ArrowLeftRight,
+    url: "/projects/token-bridge",
+    stats: "5 Active Bridges"
   }
 ]
 
-export default function PlaygroundPage() {
+export default function ProjectsPage() {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -59,7 +59,7 @@ export default function PlaygroundPage() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Playground</BreadcrumbPage>
+                  <BreadcrumbPage>Projects</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -67,7 +67,7 @@ export default function PlaygroundPage() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {playgroundCards.map((card) => (
+            {projectCards.map((card) => (
               <a 
                 key={card.title}
                 href={card.url}

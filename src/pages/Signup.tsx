@@ -1,9 +1,20 @@
+'use client'
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { FcGoogle } from "react-icons/fc";
 import { LuGithub } from "react-icons/lu";
 
 export default function Signup() {
+  const router = useRouter()
+
+  const handleSignup = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Add your signup logic here
+    router.push('/dashboard')
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-black/95">
       <div className="w-full max-w-md p-8 space-y-6 bg-black/40 backdrop-blur-xl rounded-xl border border-gray-800 my-8">
@@ -91,18 +102,18 @@ export default function Signup() {
 
         <p className="text-center text-sm text-gray-400">
           Already have an account?{' '}
-          <Link to="/login" className="text-green-400 hover:text-green-300">
+          <Link href="/login" className="text-green-400 hover:text-green-300">
             Sign in
           </Link>
         </p>
 
         <p className="text-center text-xs text-gray-500">
           By clicking continue, you agree to our{' '}
-          <Link to="/terms" className="text-green-400 hover:text-green-300">
+          <Link href="/terms" className="text-green-400 hover:text-green-300">
             Terms of Service
           </Link>{' '}
           and{' '}
-          <Link to="/privacy" className="text-green-400 hover:text-green-300">
+          <Link href="/privacy" className="text-green-400 hover:text-green-300">
             Privacy Policy
           </Link>
           .

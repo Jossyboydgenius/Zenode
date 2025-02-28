@@ -75,37 +75,39 @@ export default function LearnToEarnPage() {
   ];
 
   return (
-    <div className="pt-32 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">
-            Learn to <span className="gradient-text green-glow">Earn</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Start your Web3 development journey and earn rewards while learning.
-            Choose your learning path and level up your skills.
-          </p>
-        </div>
+    <div className="min-h-screen bg-background">
+      <div className="pt-32 px-4 pb-24">
+        <div className="max-w-7xl mx-auto">
+          {/* Hero Section */}
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-bold text-white mb-6">
+              Learn to <span className="gradient-text green-glow">Earn</span>
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Start your Web3 development journey and earn rewards while learning.
+              Choose your learning path and level up your skills.
+            </p>
+          </div>
 
-        {/* Learning Paths Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-16">
-          {learningPaths.map((path, index) => (
-            <PathCard key={index} {...path} />
-          ))}
-        </div>
+          {/* Learning Paths Grid */}
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-16">
+            {learningPaths.map((path, index) => (
+              <PathCard key={index} {...path} />
+            ))}
+          </div>
 
-        {/* CTA Section */}
-        <div className="text-center">
-          <Link 
-            href="/dashboard"
-            className="magical-border text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center group"
-          >
-            <span className="relative z-10 flex items-center">
-              Start Learning Now
-              <ChevronRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-            </span>
-          </Link>
+          {/* CTA Section */}
+          <div className="text-center">
+            <Link 
+              href="/dashboard"
+              className="magical-border text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center group"
+            >
+              <span className="relative z-10 flex items-center">
+                Start Learning Now
+                <ChevronRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

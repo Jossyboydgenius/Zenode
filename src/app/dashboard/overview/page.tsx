@@ -1,6 +1,6 @@
-'use client'
+ 'use client'
 
-import React from 'react';
+import React from 'react'
 import { AppSidebar } from "@/components/layout/AppSidebar"
 import {
   Breadcrumb,
@@ -16,35 +16,11 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Activity, Users, GitPullRequest, Trophy, GitCommit, GitPullRequestDraft, MessageSquare, Star, Code, PieChart, LineChart } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CodeEditor } from "@/components/CodeEditor";
+import { Activity, Users, GitPullRequest, Trophy, GitCommit, GitPullRequestDraft, MessageSquare, Star, Code } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { CodeEditor } from "@/components/CodeEditor"
 
-const dashboardCards = [
-  {
-    title: "Overview",
-    description: "View your dashboard summary and key metrics",
-    icon: PieChart,
-    url: "/dashboard",
-    stats: "12 Active Projects"
-  },
-  {
-    title: "Projects",
-    description: "Manage and track your ongoing projects",
-    icon: GitPullRequest,
-    url: "/dashboard/projects",
-    stats: "48 Total Projects"
-  },
-  {
-    title: "Analytics",
-    description: "View detailed analytics and insights",
-    icon: LineChart,
-    url: "/dashboard/analytics",
-    stats: "Real-time Data"
-  }
-]
-
-export default function DashboardPage() {
+export default function OverviewPage() {
   const [showEditor, setShowEditor] = React.useState(false);
 
   return (
@@ -58,35 +34,66 @@ export default function DashboardPage() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Dashboard</BreadcrumbPage>
+                  <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Overview</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {dashboardCards.map((card) => (
-              <a 
-                key={card.title}
-                href={card.url}
-                className="glass-effect p-6 rounded-xl hover:bg-white/5 transition-colors"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-2 bg-green-500/20 rounded-lg">
-                    <card.icon className="w-6 h-6 text-green-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">{card.title}</h3>
-                    <p className="text-sm text-gray-400">{card.description}</p>
-                  </div>
+          {/* Stats Grid */}
+          <div className="grid auto-rows-min gap-4 md:grid-cols-4">
+            <div className="glass-effect p-6 rounded-xl">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-green-500/20 rounded-lg">
+                  <Activity className="w-6 h-6 text-green-400" />
                 </div>
-                <div className="text-sm text-gray-500">{card.stats}</div>
-              </a>
-            ))}
+                <div>
+                  <p className="text-sm text-gray-400">Active Projects</p>
+                  <h3 className="text-2xl font-bold text-white">12</h3>
+                </div>
+              </div>
+            </div>
+            <div className="glass-effect p-6 rounded-xl">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-green-500/20 rounded-lg">
+                  <GitPullRequest className="w-6 h-6 text-green-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Pull Requests</p>
+                  <h3 className="text-2xl font-bold text-white">48</h3>
+                </div>
+              </div>
+            </div>
+            <div className="glass-effect p-6 rounded-xl">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-green-500/20 rounded-lg">
+                  <Trophy className="w-6 h-6 text-green-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">XP Earned</p>
+                  <h3 className="text-2xl font-bold text-white">2,450</h3>
+                </div>
+              </div>
+            </div>
+            <div className="glass-effect p-6 rounded-xl">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-green-500/20 rounded-lg">
+                  <Users className="w-6 h-6 text-green-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Contributors</p>
+                  <h3 className="text-2xl font-bold text-white">156</h3>
+                </div>
+              </div>
+            </div>
           </div>
           
-          {/* Main Dashboard Content */}
+          {/* Main Content */}
           <div className="min-h-[calc(100vh-16rem)] rounded-xl glass-effect p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold text-white">Recent Activity</h2>
@@ -176,33 +183,6 @@ export default function DashboardPage() {
                       <span className="flex items-center gap-1">
                         <Trophy className="w-4 h-4" />
                         8 hours ago
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Activity Item 4 */}
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-10 h-10">
-                    <AvatarImage src="/avatars/carol.jpg" alt="Carol" />
-                    <AvatarFallback>AJ</AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-white">Awe Joseph</span>
-                      <span className="text-gray-400">earned a badge</span>
-                      <span className="flex items-center gap-1 text-yellow-400">
-                        <Star className="w-4 h-4" />
-                        Smart Contract Genius
-                      </span>
-                    </div>
-                    <p className="text-gray-400 mt-1">
-                      Completed 20 smart contract challenges
-                    </p>
-                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                      <span className="flex items-center gap-1">
-                        <Trophy className="w-4 h-4" />
-                        10 hours ago
                       </span>
                     </div>
                   </div>
