@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
 import { app } from "@/backend/octokit";
-export const dynamic = 'force-dynamic'
-export const revalidate = 3600 // revalidate every hour
+import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-static";
 
 const GET = async (req: NextRequest, res: NextResponse) => {
 
@@ -34,4 +34,4 @@ const GET = async (req: NextRequest, res: NextResponse) => {
    return NextResponse.json(result);
 }
 
-export { GET }
+export { GET };
