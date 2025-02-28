@@ -3,35 +3,27 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-static";
 
-const GET = async (req: NextRequest, res: NextResponse) => {
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const username = searchParams.get("username");
 
-   const { searchParams } = new URL(req.url);
-   const username = searchParams.get("username");
-
-   const result = await app.octokit.request("GET /users/{username}/installation", {
+    const result = await app.octokit.request("GET /users/{username}/installation", {
       username: username as string
-   });
-   console.log(result);
-   const INSTALLATION_ID = result.data.id;
-   // const octokit = await app.getInstallationOctokit(INSTALLATION_ID);
-   // const ress = await octokit.request("GET /repos/{owner}/{repo}/issues/{issue_number}", {
-   //    owner: "github",
-   //    repo: "docs",
-   //    issue_number: 11901,
-   //    headers: {
-   //       "x-github-api-version": "2022-11-28",
-   //    },
-   // });
-   // console.log(ress);
+    });
+    console.log(result);
+    const INSTALLATION_ID = result.data.id;
 
-   if (!username) {
+    if (!username) {
       return NextResponse.json({ error: "Username is required" }, { status: 400 });
-   }
+    }
 
-   // const response = await fetch(`https://api.github.com/users/${username}`);
-   // const data = await response.json();
-
-   return NextResponse.json(result);
+    return NextResponse.json({ success: true, data: result });
+  } catch (error) {
+    console.error('Error:', error);
+    return NextResponse.json(
+      { success: false, error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
 }
-
-export { GET };
