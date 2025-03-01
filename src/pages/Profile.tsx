@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSelector } from 'react-redux';
 import { RootState } from '@/context/redux/store';
+import dynamic from 'next/dynamic';
 
-export default function Profile() {
+const Profile = () => {
    const user = useSelector((state: RootState) => state.user.user);
    console.log(user);
    const [avatar, setAvatar] = useState<string | null>(user?.avatar_url as string);
@@ -268,3 +269,7 @@ export default function Profile() {
       </div>
    );
 }
+
+export default dynamic(() => Promise.resolve(Profile), {
+   ssr: false
+});

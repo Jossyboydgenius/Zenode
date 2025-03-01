@@ -6,6 +6,8 @@ import { RootState } from '@/context/redux/store';
 
 export default function Projects() {
    const [showEditor, setShowEditor] = React.useState(false);
+   const projects: any = useSelector((state: RootState) => state.repo.name);
+   console.log(projects);
 
    const repo = [
       {
@@ -33,9 +35,6 @@ export default function Projects() {
          stars: 120
       }
    ];
-
-   const projects: any = useSelector((state: RootState) => state.repo.name);
-   console.log(projects);
 
    return (
       <div className="container mx-auto p-6">

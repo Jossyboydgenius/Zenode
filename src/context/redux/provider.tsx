@@ -5,7 +5,7 @@ import { store } from "./store"
 
 const ReduxProvider = ({ children }: { children: React.ReactNode }) => {
    return (
-      <Provider store={store}>
+      <Provider store={store as any}>
          {children}
       </Provider>
    )

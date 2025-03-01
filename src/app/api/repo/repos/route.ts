@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-static";
 
-const GET = async (req: NextRequest, res: NextResponse) => {
+const GET = async (req: NextRequest, res: any) => {
 
    const { searchParams } = new URL(req.url);
    const username = searchParams.get("username");
