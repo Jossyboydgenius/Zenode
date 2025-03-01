@@ -1,8 +1,7 @@
 {
   "root": true,
   "extends": [
-    "next/core-web-vitals",
-    "plugin:react-hooks/recommended"
+    "next/core-web-vitals"
   ],
   "plugins": ["react-hooks"],
   "rules": {
@@ -14,4 +13,4 @@
       "rootDir": "src"
     }
   }
-} 
+}

@@ -21,7 +21,8 @@ module.exports = {
     			'collapsible-up': 'collapsible-up 0.2s ease-out',
     			scroll: 'scroll 25s linear infinite',
     			'accordion-down': 'accordion-down 0.2s ease-out',
-    			'accordion-up': 'accordion-up 0.2s ease-out'
+    			'accordion-up': 'accordion-up 0.2s ease-out',
+    			'spin-slow': 'spin 3s linear infinite', // Added spin-slow animation
     		},
     		keyframes: {
     			'collapsible-down': {
@@ -66,6 +67,14 @@ module.exports = {
     				},
     				to: {
     					height: 0
+    				}
+    			},
+    			spin: { // Added spin keyframes if not already defined
+    				from: {
+    					transform: 'rotate(0deg)'
+    				},
+    				to: {
+    					transform: 'rotate(360deg)'
     				}
     			}
     		},
