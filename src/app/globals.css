@@ -175,3 +175,22 @@
     @apply bg-background text-foreground;
   }
 } 
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, rgb(15, 15, 18), rgb(7, 1, 18));
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: inset 0 0 0 transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(10, 152, 136, 0.879);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}

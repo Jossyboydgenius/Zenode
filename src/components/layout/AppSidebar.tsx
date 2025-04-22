@@ -62,6 +62,10 @@ const data = {
                title: "Submit Proposal",
                url: "/dashboard/submit-proposal",
             },
+            {
+               title: "Search",
+               url: "/dashboard/search",
+            },
          ],
       },
       {

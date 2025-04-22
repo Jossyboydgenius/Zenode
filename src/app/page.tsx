@@ -7,7 +7,6 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
       <div className="relative pt-32 bg-black">
         {/* Gradient overlay - inverted direction */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-green-900/50"></div>
